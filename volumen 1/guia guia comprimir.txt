@@ -1,0 +1,85 @@
+### Guía para comprimir archivos en Debian
+
+En Debian, puedes comprimir y descomprimir archivos utilizando diferentes herramientas disponibles en la terminal. A continuación, se presentan las definiciones y comandos para cada una de las herramientas más comunes:
+
+---
+
+#### **1. `gzip`**
+- **Definición**: Una herramienta utilizada para comprimir archivos individuales. El formato resultante es `.gz`.
+- **Comandos**:
+  - Comprimir un archivo:
+    ```bash
+    gzip archivo.txt
+    ```
+  - Descomprimir un archivo:
+    ```bash
+    gunzip archivo.txt.gz
+    ```
+
+---
+
+#### **2. `bzip2`**
+- **Definición**: Similar a `gzip`, pero ofrece una mejor tasa de compresión. Genera archivos con extensión `.bz2`.
+- **Comandos**:
+  - Comprimir un archivo:
+    ```bash
+    bzip2 archivo.txt
+    ```
+  - Descomprimir un archivo:
+    ```bash
+    bunzip2 archivo.txt.bz2
+    ```
+
+---
+
+#### **3. `zip`**
+- **Definición**: Herramienta que permite comprimir uno o varios archivos en un archivo `.zip`. Compatible con sistemas Windows.
+- **Comandos**:
+  - Comprimir un archivo:
+    ```bash
+    zip archivo.zip archivo.txt
+    ```
+  - Comprimir varios archivos:
+    ```bash
+    zip archivo.zip archivo1.txt archivo2.txt
+    ```
+  - Comprimir una carpeta completa:
+    ```bash
+    zip -r carpeta.zip carpeta/
+    ```
+  - Descomprimir un archivo `.zip`:
+    ```bash
+    unzip archivo.zip
+    ```
+
+---
+
+#### **4. `tar`**
+- **Definición**: Tar es una herramienta que empaqueta varios archivos en un solo archivo, con extensión `.tar`. Puede combinarse con herramientas como `gzip` o `bzip2` para agregar compresión.
+
+- **Comandos**:
+  - Empaquetar y comprimir con `gzip`:
+    ```bash
+    tar -czvf archivo.tar.gz archivo_o_carpeta
+    ```
+  - Empaquetar y comprimir con `bzip2`:
+    ```bash
+    tar -cjvf archivo.tar.bz2 archivo_o_carpeta
+    ```
+  - Descomprimir un archivo `.tar.gz`:
+    ```bash
+    tar -xzvf archivo.tar.gz
+    ```
+  - Descomprimir un archivo `.tar.bz2`:
+    ```bash
+    tar -xjvf archivo.tar.bz2
+    ```
+
+---
+
+### Notas
+- Los archivos comprimidos ocupan menos espacio y son más fáciles de transferir.
+- `gzip` y `bzip2` solo funcionan con archivos individuales, mientras que `tar` permite empaquetar varios archivos o carpetas antes de comprimir.
+- Usa la opción `-v` (verbose) para ver detalles durante la compresión o descompresión.
+
+¡Experimenta con las herramientas y elige la que mejor se adapte a tus necesidades!

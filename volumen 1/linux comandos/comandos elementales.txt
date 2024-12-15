@@ -1,0 +1,62 @@
+  # comandos que mas vas a llegar a usar:
+ 
+  # comandos de navegacion 
+  # gestion de ficheros 
+  # gestios de directorios 
+
+  # cd son las siglas de Change Directory su funcion es cambiar de directorios y este comando recibe rutas relativas como rutas argumentativas o (absolutas) 
+
+ cd
+
+  # pwd son las siglas de Print Working Directory y lo que hace es imprimirte en pantalla el directorio actual de trabajo donde estas ubicado 
+
+ pwd
+ 
+  # Si no le enviamos ningun algumento solamente nos va a listar el directorio actual 
+  # Es el acronimo de list  que su funcion es listar los ficheros y directorios 
+  # ls cuenta con varios parametros dos de lo mas usados son -a y -l 
+  # ls -a nos va a mostrar todos los ficheros ocultos a=all
+  # ls -l muestra los ficheros ocultos y detalles sobre el archivo 
+  # ls -lR Muestra ficheros y directorios dentro del directorio o directorios listados.
+  # En ls todos los comandos pueden ser concatenados 
+  # ls -l !$
+ 
+ ls
+ 
+  # Los ficheros ocultos los creamos cambiandole el nombre o poniendole al crearlo un . al principio del nombre
+  
+  
+  # Funciona para crear ficheros vacios, tambien tiene algunos parametros de utilidad 
+  # touch -a fichero.txt  El parametro -a solamente cambia la hora de acceso del fichero  
+  # touch -m fichero.txt Este solo cambia la fecha  de modificacion  del fichero 
+  
+ touch
+ 
+  # Es el acronimo de copy y nos permite copiar tantos ficheros como directorios 
+  # cp fichero.txt Descargas/ficheros.txt
+  # Tambien recibe parametros:
+  # cp -i fichero.txt Descargas/ficheros.txt Este parametro nos obliga a pedir confirmacion antes sobre escribirpor ejemplo si existe otro fichero con ese nombre esto hace que no se elimine el existente 
+  # cp -r fichero.txt Descargas/ Escritorio/ Que sirve para copiar directorio de forma recursiva y todos los directorios que este contenga  
+  
+ cp
+ 
+  # Es el acronimo de move sirve para mover o renombrar ficheros y directorios la sintasis es casi igual que la de cp:
+  # mv (ruta_origen) (ruta_destino)
+  # mv (ruta_origen_vieja) (ruta_destino_nueva)
+  # para cambiarle el nombre a un fichero o directorio 
+  # mv fichero.txt fichero-prueba.txt
+  # tambien tiene varios parametros que podemos usar:
+  # mv -i (ruta_origen) (ruta_destino) nos va a pedir confirmacion antes de sobre escribir un fichero o dierectorio 
+  # mv -u (ruta_origen) (ruta_destino) solamente va a sobre escribir el activo si el activo del destino es ma antiguo
+  #
+  
+ mv
+ 
+  # Es el acronimo de remove este comando sirve para eliminar ficheros y directorios
+  # rm (ruta del fichero) admite rutas adsolutas como relativas 
+  # Tenemos parametros que tambien podemos usar 
+  # rm -i fichero.txt Te pide confirmacion antes de eliminar 
+  # rm -r directorio ,Hace alucion al contenido recursivo especialmente si tenemos un directorio que queremos eliminar y dicho directorio tiene muchos mas directorios
+    
+ 
+ rm

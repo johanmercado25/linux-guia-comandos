@@ -1,0 +1,56 @@
+# Comandos De Gestions De Grupos 
+
+  # groupadd 
+			  Estos comandos son menos amigables ya que la interaccion con ellos nos es tan grafica que digamos 
+  # groupdel
+
+# Tenemos sus contra partes mas dinamicas 
+
+  # addgroup Este comando es una interfas mas amigable y mas moderna , este comando te permite crear grupos dentro del sistema operativo este comando debe ejecutarse con sudo, para que nos coja el usuario root y podamos ejecutarlo con privilegios elevados
+	# Su sintaxis es muy simple:
+	  
+	  # sudo addgroup nuevoGrupo
+  
+  # delgroup Este comando es una interfas mas amigable y mas moderna, este te permitira eliminar grupos
+	# Su sintaxis es muy simple 
+	  
+	  # sudo delgroup grupoExistente 
+  
+    # Ojo si el grupo esta vacio te dejara eliminarlo, pero si el grupo contiene usuarios primero tienes que sacar los usuarios del grupo
+
+
+  # groupmod Este viene haciendo la misma funcion de usermod pero para grupos, con limitaciones, ya que te permite hacer menos cosas por ejemplo modificar el nombre de un grupo 
+  
+  # Este comando recibe varios parametros 
+	
+	# sudo groupmod -n nombreActual nuevoNombre Este parametro sirve para modificar el nombre de un grupo 
+	
+
+  # gpasswd Este comando para administrar las contraseñas de grupo y miembros de cada grupoExistente
+  
+	# Con este comando tenemos varios parametros 
+	
+	# gpasswd -a usuario Con este parametro podemos añadir un usuario a un grupo 
+	
+	# gpasswd -d usuario Con este parametro podemos eliminar usuarios de un grupo
+	
+  # EJEMPLOS
+	
+	# sudo gpasswd grupo Con este comando le añadimo contraseña a un grupo 
+	
+	# sudo gpasswd -a usuario grupo Con este parametro añadimos usuario al grupo 
+	
+	# sudo gpasswd -d usuario grupo Con este parametro eliminamos usuario al grupo 
+	
+	
+  # groups Este comando te va permitir ver los grupos a lo que perteneces, pero solo veras los grupos del usuario al que estas logueado pero tambien puedes consultar la de otro usuario 
+  
+	# groups usuario Este comando te va permitir ver los grupos del usurio que le indicaste 
+	
+  
+  # usermod Es tambien util para el tema de grupos 
+	# Ya que tenemos parametros que podemos usar 
+	
+	  # usermod -aG grupo usario Este parametro te va a permitir ausuarioadir un usuario a un grupo 
+	  
+	  # usermod -G grupo usuario Este parametro va a establecer el grupo suplementario del usuario 

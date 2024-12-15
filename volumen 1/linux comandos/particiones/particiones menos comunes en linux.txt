@@ -1,0 +1,80 @@
+Particiones Menos Comunes en Linux
+1)# /mnt y /media
+
+	# Definición: Directorios utilizados para montar sistemas de archivos temporales.
+
+	# Uso: /mnt se utiliza para montar sistemas de archivos temporalmente, mientras que /media se utiliza para montar dispositivos externos, como CD-ROMs, USBs, y discos externos.
+
+	# Pros:
+
+	# Facilita el acceso temporal a sistemas de archivos y dispositivos externos.
+
+	# Contras:
+
+	# Puede ser confuso si no se sigue una convención estándar de uso.
+
+	# Casos de Uso: En cualquier sistema que necesite montar y acceder a sistemas de archivos temporales o dispositivos externos frecuentemente.
+
+2)# /proc
+
+	# Definición: Un sistema de archivos virtual que contiene información sobre los procesos y el estado del sistema.
+
+	# Uso: Utilizado por el sistema y administradores para obtener información detallada del sistema.
+
+	# Pros:
+
+	# Proporciona una manera fácil de acceder a la información del sistema.
+
+	# Contras:
+
+	# No es una partición de almacenamiento real; es un sistema de archivos virtual.
+
+	# Casos de Uso: Utilizado principalmente por el sistema operativo y herramientas de administración para obtener información de procesos y sistema.
+
+3)# /sys
+
+	# Definición: Un sistema de archivos virtual que proporciona información y control sobre los dispositivos de hardware.
+
+	# Uso: Utilizado para interactuar y obtener información sobre dispositivos de hardware.
+
+	# Pros:
+
+	# Proporciona una manera estandarizada de acceder a la información del hardware.
+
+	# Contras:
+
+	# No es una partición de almacenamiento real; es un sistema de archivos virtual.
+
+	# Casos de Uso: Utilizado principalmente por el sistema operativo y herramientas de administración para interactuar con el hardware.
+
+4)# /dev
+
+    # Definición: Un directorio que contiene archivos de dispositivos.
+
+    # Uso: Proporciona acceso a los dispositivos de hardware a través de archivos especiales.
+
+    # Pros:
+
+    # Estándar en todos los sistemas Linux; proporciona acceso a todos los dispositivos de hardware.
+
+    # Contras:
+
+    # No es una partición de almacenamiento real; es un sistema de archivos virtual.
+
+    # Casos de Uso: Utilizado por el sistema operativo y las aplicaciones para acceder a los dispositivos de hardware.
+
+5)# /lib
+
+    # Definición: Contiene las bibliotecas compartidas necesarias para arrancar el sistema y ejecutar los comandos en el directorio root.
+
+    # Uso: Almacena las bibliotecas esenciales y los módulos del kernel.
+
+    # Pros:
+
+    # Esencial para el arranque y funcionamiento del sistema.
+
+    # Contras:
+
+    # No debería modificarse a menudo; los cambios pueden causar inestabilidad en el sistema.
+
+    # Casos de Uso: Cualquier sistema Linux; contiene las bibliotecas críticas para el funcionamiento del sistema.

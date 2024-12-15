@@ -1,0 +1,136 @@
+# Comandos de gestion de usuarios
+
+
+  # useradd Este comando funciona para agregar usuarios 
+  
+  # userdel Este comando es para eliminar usuarios
+  
+	# Esto comandos los llegaras a usar, pero son comandos muy limitados por que son muy basicos, pero a nivel de personalizar usuarios que vayamos a usar, no van a ser muy utiles a nivel de ahorrarnos tiempo, ya que fueron de los primeros comandos que se hicieron
+  
+	# Ojo aqui veremos comandos principales o mas importantes, que hay muchos comandos de gestion de usuarios 
+  
+  # adduser
+  
+  # deluser
+  
+    # Estos comandos son lo mismo que los anteriores pero con proteina y estos comandos estan escritos en el leguaje de programacion PERL y por detras lo que hace es llamar a los comandos # adduser # deluser, pero con la diferencia de que es mas potente y hacen que la interaccion sea mucho mas facil a nivel usuario y esto te llevara a ahorrarnos mucho tiempo 
+  
+  
+  # adduser Este comando es usados para crear nuevos usuarios en el sistema 
+  
+    # sudo adduser nuevoUsuario Este comando lo que hara es añadir al usuario al fichero /etc/passwd  y cada uno de los datos que vas a introducir, en este ficheros son datos que uno le ira proporcionando, durante la creacion del usuario 
+	#Este comando debemos usarlo usando el comando sudo o desde el usuario root 
+	# Por ejemplo:
+	# tail -n1 etc/passwd  Si ejecutamos este comando para leer la ultima linea del fichero passwd que esta en /etc, aqui podremos ver que se añadio una nueva linea 
+	
+  
+  # deluser  Este comando nos sirve para eliminar un usuario del sistema 
+  
+	# sudo deluser --remove-home nuevoUsuario Este comando debemos ejecutarlo con permisos de administrador 
+	  # --remove-home Aqui usuamos un parametro muy interesante, que este lo que permite que eliminemos el usuario y tambien el directorio home asociado al usuario que acabamos de eliminar
+	  
+	  
+  # usermod Este es un comando que nos permite modificar las propiedades de un usuario existente como el nombre de usuario, su directorio home o el grupo al que esta asignado el usuario 
+	
+	  # Con este comando tenemos una serie de parametros:
+	    
+		# sudo usermod -l nuevoNombre nuevoUsuario Este parametro lo que nos permite cambiar el nombre de login del usuario
+		
+		# sudo usermod -d /home/nuevoNombre nuevoUsuario Este parametro lo que nos permite indicar el nuevo directorio home y al final le ponemos el usuario sobre el que queremos hacer los cambioe
+		  # Estos comando se suelen usar en cojunto 
+			
+			# sudo usermod -l nuevoNombre -d /home/nuevoNombre nuevoUsuario
+		
+		# Este hara los siguientes cambios ya el usuario nuevoUsuario cambiara de nombre a nuevoNombre y su directorio home cambiaria de /home/nuevoUsuario a /home/nuevoNombre
+	  
+	  # usermod Es comando muy poderoso y cual recibe muchos parametros y puedes averiguarlo atraves de los comandos de ayuda que vimos antes 
+
+
+  # passwd Este comando es usado para cambiar la contraseña de un usuario; Este comando tambien recibe parametros 
+  
+	# passwd -l Este parametro bloquea la contraseña del usuario, en palabras claves desactiva la cuenta 
+	
+	# passwd -u Este parametro desbloquea la contraseña del usuario, en palabras claves desbloquea la cuenta o la reactiva 
+	
+	# Por Ejemplo si ejecutamos: 
+	
+		# sudo passwd -l nombreDeUsuario Este comando bloqueara la cuenta de usuario 
+		
+		# sudo passwd -u nombreDeUsuario Este comando desbloqueara la cuenta de usuario 
+		
+		# sudo passwd nombreDeUsuario Este comando le cambiara la contraseña al usuario que le indiquemo 
+		
+		# Ojo este comando se ejecuta con permisos de administrador para poder interactuar con otros usuarios 
+		
+		# passwd Si ejecutamos el comando por si solo este cambiara la contraseña del usuario que estemos loguedo
+
+
+# Ahora Entramos En Comandos Que Podemos Ejecutar A Nivel Local 
+
+
+  # id Este es el acronimo de IDENTIFICATION y basicamente nos permite eso indentificar informacion del usuario actual o del usuario que le indiquemos
+  
+	# Tambien tenemos varios parametros:
+	
+	  # id -u Este parametro solamente muestra el UID: User ID del usuario, que es el id unico asignado a ese usuario en el sistema 
+	  
+	  # id -g Este parametro solanmente muestra el GID: Group ID del usuario que estemos logueado y nos mostrara el grupo al que pertenecemos
+	  
+	  # Ejemplos
+	  
+		# id -u usuario Si le pasamos el usuario que deseamos consultar nos mostrara el id de este usuario 
+		
+		# id usuario Este comando nos dara informacion del usuario que le indiquemos 
+		
+
+  # who Este comando nos permite saber quien esta conectado al sistema 
+  
+	# Este comando tambien recibe parametros 
+	
+	  # who -u Este parametro nos mostrara los usuarios conectados junto a la hora de conexion
+	    # Esto en un sistema personal la mayoria de los casos solo mostrara tu usuario, pero en un sistema corporativo esto tendra mucha iportancia para administrar y saber en que momento se han conectados los usuarios y tener control de los accesos a nuestro sistema 
+  
+  
+  # su Este es el acronimo de Switch User y nos permite cambiar de usuario, hay que tener en cuenta que si no se especifica un nombre de usuario, este te cambiara al usuario root 
+  
+	# su usuario
+	
+	# Con este comando tenemos una serie de parametros 
+	
+	# su -l 
+	# su --login Estos parametros no proporcionara un entorno similar al que tendria un usuario si se conectara 
+	  # su -l usuario 
+	
+	# su -c Este nos va a permitir ejecutar un comando como el usuario que le indiquemos( COn los permisos de ese usuario) sin la necesidad que tengamos que loguearnos primero como ese usuario para poder ejecutar el comando nuevo EJ:
+	  # su -c id usuario Ejecutamos el comando, luego el parametro, depues el comando y luego el usuario
+
+
+  # sudo Este comando nos permite ejecutar comandos con privilegios de otro usuario, es similar en sierta forma con lo que vimos en el comando anterior con diferencias en sus fines:
+	# su: Cambiar de sesion 
+	# sudo: Ejecutar comandos como otro usuario 
+	
+	# Para este comando tenemos una serie de parametros:
+	  
+	  # sudo -u Este parametro nos permite especificar el usuario con el que ejecutaremos el comando
+		# sudo -u usuario id Este nos devolvera la informacion que nos proporciona el comando id, pero referente al usuario que le indiquemos
+		
+	  # sudo -i Este parametro nos proporcionara un entorno similar al que tendria el usuario si se conectara 
+		# sudo -i -u usuario Este comando con estos parametro no solo nos permitira ejecutar comando como dicho usuario si no que tambien nos va a abrir una shell, con el entorno del usuario especificado 
+	
+	# Ojo explicado esto pensaras que el comando (sudo) y (su) son lo mismo pero en realidad el comando sudo es mas potente que el comando su 
+	# Tambien como el comando (su) si no le indicamos un usuario nos tomara por defecto el usuario root 
+	
+	# sudo su De seguro te habras topado con este comando y lo que este comando indica es que ejecutes un cambio de usuario como root al usuario root 
+	# Esta no la unica forma de obtener una SHELL como el usuario root usando sudo tembien podemos utilizar:
+	  # sudo -i 
+	  # sudo -s Este parametro viene de shell, por lo tanto se nos abrira una shell como root
+
+
+  # whoami Este nombre viene del juego de palabras en ingles who i am que traducido al español significa quien soy?, este nos va a imprimir en pantalla en nombre del usuario en pantalla asociado con el user id actual en la terminal 
+  
+
+  # finger Este comando proviene de la idea de señalar, este comando nos proporciona informacion de un usuario en particular por ejemplo la ultima vez que inicio sesion y otros detalles 
+	
+	# Ejecutarlo es muy simple 
+	  
+	  # finger usuario 

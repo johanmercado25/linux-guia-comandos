@@ -1,0 +1,41 @@
+# Comandos de visualizacion de ficheros
+
+  
+  # Cat como sabras es gato en ingles pero realmente es el acronimo de cancatenate, este comando se diseño  para concatenar y mostrar el contenido de ficheros, su principal uso es leer ficheros dentro de la terminal 
+  # cat (ruta_al_fichero) La ruta puede ser absoluta o relativa 
+  # Para concatenar ficheros es muy facil 
+  # cat (ruta fichero 1) (ruta fichero 2) > (ruta al fichero 1+2)
+  # Tambien tenemos algunos parametros que podemos usar 
+  # cat -n fichero Este servira para contar el numero de lineas de un fichero 
+  
+  
+ cat
+ 
+  
+  # Head es basicamente cabeza en ingles; Este comando lo que hace es mostrar las primeras lineas de un fichero, Exactamente las primeras 10 por defecto 
+  # Este comando tambien recibe parametros 
+  # head -n5 /etc/passwd Pasandole -n + el numero de lineas que queremos ver podemos jugar con la cantidad de lineas que nos mostrara el comando 
+  
+ 
+ head
+ 
+ 
+  # Tails Basicamente es el antonimo del comando head, este nos mostrara las ultimas 10 lineas de un fichero 
+  # Este comando tambien recibe parametros 
+  # tails -n5 /etc/passwd Pasandole -n + el numero de lineas que queremos ver podemos jugar con la cantidad de lineas que nos mostrara el comando 
+  # tails -f /var/log/dpkg.log  Este parametro nos permite seguir el contenido en tiempo real de un fichero esto es utils si estas almacenando log 
+  
+ 
+ tails
+ 
+ 
+  # Este basicamente la evolucion del comando more; Este comando Este comando nos muestra el contenido de un fichero de forma paginada, lo que nos permite ver el contenido de un fichero pagina por pagina 
+  # Tambien tenemos parametros que podemos usar:
+  # less -N Nos permite ver el numero de lineas 
+  # less -F Nos sirve para seguir el contenido del fichero en tiempo real es similar a tails -f 
+  # less +G Este nos mostrara el final de un fichero 
+  # less /etc/passwd
+  #less -F /var/log/dpkg.log
+ 
+ 
+ less

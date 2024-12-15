@@ -1,0 +1,80 @@
+# Stdin,Stdout y Stderr
+
+# Estos estandares lo tienes que tener muy presente, por que entenderlo te servira para octimizar el uso de shell principalmente para cuando uses comandos largos o para gestionar la entrada y salida de datos del comando que vas a ejecutar 
+ 
+ # Los 3 estandares son:
+  
+  # Los datos de entrada Standar Input: stdin   
+  # Los datos de salida Standar Output: stdout
+  # Los datos de error Standar Error: stderr
+  
+# Estos 3 son descriptores de archivos en sistemas unix y linux que representan la entrada de datos, la salida de datos y la salida de errores y son descriptores que estan presente en todos los comandos que llegues a ejecutar 
+ 
+ 
+
+  # Este es el medio mediante el cual los comandos y datos son recibidos por un programa este esta mayormente asociado con el teclado del usuario 
+  # Tambien tener en cuenta que Standar Input en sistema unix y linux se representa con el numero 0 
+  
+  
+ stdin  
+ 
+ 
+  # Este es el medio por el cual un programa envia datos de salida al usuario o a otro programa, tener en cuenta que cuando me refiero a programa me refiero a comando, por defecto stdout esta asosiado con el emulador de terminal ya que por ahi sabras los datos que te devuelve un comando  
+  # Tambien tener en cuenta que Standar Output en sistema unix y linux se representa con el numero 1
+  
+ stdout
+ 
+ 
+  # Es utilizados por programa para enviar mensajes de error o de diagnostico, este tambien esta asosiado al emulador de terminal 
+  ya que por ahi se te mostraran los mensajes de error o de diagnostico cuando ejecutes algun comando 
+  # El descriptor de archivos en este caso es el numero 2
+  
+  
+ stderr
+ 
+ 
+# Descriptor de archivos ?
+ 
+ # Es un numero que representan recursos de entrada y salida a nivel de unix y linux 
+ # Los 3 descriptores estan abietos por defecto para cada proceso que se ejecute en el sistema operativo 
+ # Estos descriptores de archivos lo podemos manipular a nuestro completo antojo 
+ # De esta forma podemos reederigir la entrada, salida y salida de errore a diferentes destinos y asi tener mas contros de los comandos que estamos ejecutando y sobre todo del comportamiento que se genera una vez ejecutado 
+ 
+  # Ejemplos:
+   
+   # stdin aqui englovariamos a todas las entradas que recibe el sistema de ti y el periferico que se suele usar para esto es el teclado 
+   
+   # stdout Esta es la salida por defecto, tener en cuenta que cuando ejecutamos comandos si no esperamos un Standar Output lo correcto que si el comando se ejecuto con exito no recibamos ninguna señal
+   # Si creamos un directorio mkdir hola.txt y no recibimos una repuesta entendemos que el comando se ejecuto con exito 
+   # Pero en contraparte si hay varios comandos que si nos van a dar Standar Output por ej: ls
+
+   # stderr es lo mismo que el Standar Output Pero solo se utiliza para temas de errores y de diagnostico 
+   # ls noexiste como este directorio no existe no enviara un mensaje por terminal 
+   # Esta salida de datos aunque se haga por el mismo lugar es diferente 
+
+   # Como lo describimos anteriormente o = entrada 1 = salida 2 = Error   
+   
+   # Si ejecutamos 
+   # ls / 1> hola_stdout.txt 
+   # Aqui estamos indicandole a linux que todo lo que entienda como numero 1 lo reedirija a este fichero con eso estamos forzando que si el comando tiene una salida erronea esta salida no se va a reedirigir al fichero, ya que seria Standar Error que se indentifica con el numero 2 no con el uno que es Standar Output
+   
+   # Para reedirigir el stderr es lo mismo por ej:   
+   # ls / noexiste 2> holastderr.txt 
+   # Esto no, nos mostrara nada en pantalla pero si lo tendremos en el fichero 
+   
+# Esto es importante cuando estamos ejecutando un comando que nos esta ejecutando tanto Standar Output como Standar Error esto es muy normal que pase cuando hacemo busquedas la ventaja que podemos enviar la salida por defecto a un fichero y la salida erronea a otro para que de esta tener todo mas ordenado 
+ 
+ # Por Ejemplo: Si queremos que nos muestre la salida del comando por pantalla, pero que todo el Standar Error que puediese llegar a salir no lo muestre ejecutamos el comando en cuestion 
+ # ls /noexiste 2> /dev/null 
+ 
+ # /dev/null Es un directorio muy importante basicamente es como una papelera de reciclaje dentro de linux esto es una descripcion jocosa, hay que asumir /dev/null como un agujero negro que se traga todo 
+ # esto es muy comun usarlo por si el comando ejecuta un mensaje de error directamente no lo muestre por pantalla y aqui nos aseguramos que todo lo que estamos viendo del comando es Standar Output 
+ # Tener en cuenta que cuando se envia un Standar Error este no se limita a que un comando no se haya ejecutado con exito, hay que comandos que se pueden ejecutar con exito pero en su salida pueden provocar errores 
+ # Errores que pueden no ser importantes y asi no tienes que verlo 
+ 
+ # Si quieres ejecutar um comando que tenga salida y tu no quieres ver ninguna salida mas de lo mismo 
+ # ls &> /dev/null
+ # En este caso no le indicariamos ni el 1 ni el 2 si el simbolo de & (Ampersand) ya que este engloba el Standar Output=1 Como el Standar Error= 2 
+ # En este caso no veras la salida por defecto ni la salida de errores
+ # Ojo con esto no podras ver nada ni saber si el comando se ejecuto correctamente 
+ 
