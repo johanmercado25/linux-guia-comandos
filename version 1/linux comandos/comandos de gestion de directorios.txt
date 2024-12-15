@@ -1,0 +1,18 @@
+# Comandos gestion de directorios 
+ 
+  # Es el acronimo de Make directory que es igual a crear directorios, la sintaxis es muy simple y este recibe tanto rutas absolutas como relativas 
+  # mkdir (ruta del nuevo directorio) Este comando tambien recibe algunos parametros
+  # mkdir -p /nuevo1/nuevo2/nuevo3/... 	Nos sirve para crear directorios padres o rutas complejas
+  
+  
+ mkdir
+ 
+ 
+  # Es es acronimo de Remove Directory y su unica funcion es eliminar directorios, con este comando no podemos eliminar ficheros solamente directorios que esten vacios, tambien tenemos varios parametros que podemos usar  
+  # rmdir --ignore-fail-on-non-empty  Lo que este parametro hace es ignorar los fallos a la hora de eliminar un directorio que esta vacio, no es que lo valla a eliminar pero ignorara los fallos 
+ 
+ 
+ rmdir
+ 
+ 
+ 

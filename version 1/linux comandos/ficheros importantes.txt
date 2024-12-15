@@ -1,0 +1,83 @@
+Comandos Importantes
+
+#Ficheros Importantes
+
+
+#Este fichero contiene informacion sobre los usuarios del sistema, que incluyen el nombre del usuario, id del usuario, id del grupo, informacion del usuario, directorio home y la shell del usuario
+
+/etc/passwd
+
+#Contiene informacion sobre los grupos del sistema incluyendo el nombre del grupo y los miembros del grupo
+
+/etc/group
+
+#Este fichero almacena las contrasena de los usuarios en formato incriptado 
+
+/etc/shadow
+
+# Aqui se definen como y donde se montan los sistemas de archivos, ya que mayormente contiene informacion de como estan hechas las particiones del sistema
+
+/etc/fstab
+
+#En el fichero interfaces, se definen las configuraciones de red, para las interfaces de red del sistema si usas una distro reciente de seguro necesitaras Netplan
+
+/etc/network/interfaces
+
+#Este fichero contiene el nombre del host del sistema y puedes cambiar el nombre del host modificando este
+
+/etc/hostname
+
+#Aqui se definen los servidores DNS que el sistema va a utilizar para hacer las traduciones de los nombre de dominio
+
+/etc/resolv.conf
+
+
+
+
+#Este comando lo use para descomentar el wyland para grabar pantalla
+sudo nano /etc/gdm3/daemon.conf
+
+
+
+Otros
+
+sudo nano /etc/apt/sources.list
+sudo nano /etc/pam.d/common-auth
+sudo nano /etc/fprintd/scanner-setup.conf
+
+# este sirve para saber informacvion le agrwegamos el numbre alante
+
+whereis 
+iwconfig
+
+
+# opciones de grub 
+
+sudo nano /etc/default/grub
+
+# Cuando haces cambios en el grub debes actualizar para que se realizen los cambios
+sudo update-grub
+
+#Opciones Sudoers
+
+sudo nano /etc/sudoers
+
+
+# reinicia tu entorno gráfico con:
+
+sudo systemctl restart display-manager
+
+# Verifica los controladores de tu ordenador
+- El comando xrandr es una herramienta en Linux que se utiliza para gestionar y configurar las pantallas y sus propiedades en un entorno gráfico basado en el servidor X Window System. Es particularmente útil para modificar la resolución, orientación, tasa de refresco y configuración de múltiples pantallas en tiempo real, sin necesidad de reiniciar el servidor gráfico.
+
+# Al ejecutar simplemente xrandr, se muestra un listado de las pantallas conectadas, sus resoluciones compatibles, tasas de refresco y estado actual.
+xrandr
+
+# Establecer una disposición específica entre varias pantallas (extensión o duplicación):
+# Extender la pantalla:
+xrandr --output HDMI-1 --right-of eDP-1
+- Esto coloca HDMI-1 a la derecha de eDP-1 (típicamente la pantalla del portátil).
+
+#Duplicar pantallas
+xrandr --output HDMI-1 --same-as eDP-1
+

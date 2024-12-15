@@ -1,0 +1,61 @@
+# Asignacion De Permisos Simbolica 
+
+  # Esta es otra manera de establecer permisos tanto a ficheros como directorios pero en este caso no se usa ningun tipo de sistema numerico en su lugar utilizamos simbolos para representar los permisos 
+   
+  # Simbolos
+   
+   # r = Lectura(r)
+   # w = Escritura (w)
+   # e = Ejecucion (e) 
+   
+  # Para las catgorias para saber a quien asignarle dichos permisos usaremos:
+  
+   # u = Propietario(u)
+   # g = Grupo(g)
+   # o = Otros (o)
+   
+  # Adicionalmente tenemos operadores
+   
+   # + Con este agregamos permisos
+   # - Con este removemos permisos
+   # = Este nos sirve para añadir los permisos de forma exacta de la forma que queremos a su vez tambien elimina otros que no especifiquemos 
+
+
+  # chmod u+rw,g+r,o+r fichero.txt Esto aplica ha ficheros, directorios
+   
+	# Propietario (u)
+	  
+	    # Lectura (r) = 4
+		# Escritura (w) = 2 
+			
+			4+2 = 6
+	  
+	  # Grupo (g)
+	  
+		# Lectura (r) = 4
+		
+		     4
+			 
+      # Otros (o)
+	  
+	    # Lectura (r) = 4
+			
+			4
+			
+  # Tenemos otra categoria que seria Todos (a)
+   
+   # Todos (a)
+    
+	# Cuando usamo la letra (a) con un signo de (+) (-) (=) cuando la usamo seguida de estos simbolos ya que deseemo
+	 # Agregar (+)
+	 # Quitar (-)
+	 # O dar igualdad de permisos (=)
+	
+	# Aqui estaremos afectando todas las categoria 
+	 # u = Propietario(u)
+     # g = Grupo(g)
+     # o = Otros (o)
+   
+   # Este parametro es util cuando queremos asignarles los mismos permisos a todos 
+   
+    # chmod a=rw fichero.txt Este cambio afectaria a todas las categorias 

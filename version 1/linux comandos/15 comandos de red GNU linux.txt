@@ -1,0 +1,176 @@
+# 15 Comandos de Red en GNU linux 
+ 
+# Primer comando 
+
+  # ip 
+  
+  # ip -V
+  
+  # ip link
+  
+  # para apagar o prender una targeta  der red hagamos el ejemplo con la tarjeta LOOPBACK
+  
+  # ip link set LOOPBACK down = Apagar
+  
+  # ip link set LOOPBACK up = Encender 
+  
+  # ip route Este nos da las rutas asociadas a las tarjetas de red que tenga el equipo 
+ 
+
+# Segundo comando 
+  
+  # dig
+  
+  # dig -h Este nos dara un listado de todos los parametros que podemos usar con este comando; Este comando nos sirve para verificar conexiones con servidores de internet 
+  
+  # dig -x 1.1.1.1 Este comando dig -x seguido de la ip de un servidor, nos dara ingormacion ahora probemos con el dominio que sacamos de la informacion que nos proporciono 
+  
+  # dig -x one.one.one.one Funciona de la misma manera pero ahora, donde nos mostraba el dominio nos muestra las ip que estan comenctada al dominio 
+  
+  # Este comando es bastante util si estamos verificando conectividad con el servidor 
+  
+  
+# Tercer comando 
+
+  # nslookup Si lo ejecutamos sin ningun parametro entrariamos en un modo interactivo, en el modo interactivo podemos trajabar en primer plano con el por ejemplo pasandole un dominio o pasandole una ip y para salir se sale cn exit 
+  
+  # nslookup 1.1.1.1
+  
+  # nslookup one.one.one.one Este da mas informacion sobre el servidor 
+  
+  
+# Cuarto comando 
+
+  # tracepath
+  
+  # tracepath -h Este comando nos dara el listado de parametros que podemos usar con este comando y como utilizarlo 
+  
+  # tracepath debian.org Esta es la forma mas sencilla de usarlo pasandole un dominio; Este nos va a mostrar todos los saltos o host, hasta ese servidor que le pasamos, solo nos muestra los ip o diminios que esta pasando para llegar a ese sitio si no que tambien nos muestra la latencia 
+  
+  # Solo dara 30 saltos si no abortara el comando 
+  
+
+# Quinto comando 
+
+  # ping 
+  
+  # ping -h Nos mostrara un listados de todos los parametros que podemos pasarle 
+  
+  # ping 1.1.1.1 Esta es la forma mas facil de usarlo pasandole una ip o un dominio y esperar que por medio del protocolo ismp nos responda 
+  
+  # ping -c 5 google.com Pasandole el paramertro -c 5 seguido de un numero que represente el numero de saltos que quieres en la solicitud, podemos indicarle las salicitudes que queremos que haga 
+
+
+# Sexto Comando
+
+  # host Este comando es uno de los mas completos, cuando lo ejecutamos por si solo nos va a mostrar una larga lista de parametros que podemos utilizar 
+  
+  # host google.com Esta es la forma mas comun de usarlo, esto nos mostrara un breve resumen de ese dominio 
+  
+  # host -v google.com Con este parametro nos mostrara mucha mas informacion 
+  
+
+# Septimo comando 
+
+  # hostname  Este comando nos mostrara el nombre del host del equipo 
+  
+  # Tambien recibe parametros
+  
+  # hostname -h Este comando mostrara una guia con todos los comandos que podemos utilizar 
+  
+  # hostname -i Este comando sirve para mostear la ip del equipo host 
+  
+  # hostname new-nombre Este comando sirve para cambiarle el nombre al host de manera temporal 
+  
+  
+# Octavo comando
+
+  # ss
+  
+  # ss -h Este comando nos mostrara una guia de todos los parametros que podemos utilozar con este comando 
+  
+  # ss -ta Este comando nos mostrara todos los socket que estan abiertos o todos los que tiene 
+  
+  # ss -lt Este comando nos filtrara un poco mas y solo mostrara lo que estan en escucha
+  
+  # ss -ltr Este comando tambien nos mostrara las parte de los protocolos, pero solo mostrara lo que estan en modo listen (escucha)
+  
+  
+# Noveno Comando 
+
+  # iwconfig  Nos va a mostrar las tarjetas de red y si tienes una tarjeta wifi te va a mostrar informacion con esta tarjeta, y las tarjetas que no sean wifi te va a mostrar que no hay extenciones wireless 
+  
+  # iwconfig -h Este comando nos mostrara los diferentes parametros que podemos usar
+  
+
+# Decimo Comando 
+
+  # whois Este comando nos dara informacion sobre dominios independiente si es tuyo o de otra persona o de una empresa
+  
+  # whois --help Este parametros nos dara una guia de todos los parametros que podemos utilizar con el comando 
+  
+  # whois google.com Este es la forma mas sencilla de usar el comando, este nos mostrara toda la informacion de este dominio 
+  
+ 
+# Undecimo Codigo 
+
+  # mtr
+  
+  # mtr -h Este parametro nos mostrara una guia de los parametros que podemos usar con este comando 
+  
+  # mtr google.com Entra en un modo interactivo, que mostrara todos los saltos o host que necesita para llegar a este dominio, tambien nos muestra los posibles paquetes perdidos, esto nos servira para medir latencia, cuando tengamos un cuello de botella al conectarnos con un servidor 
+  
+
+# Duodecimo Comando 
+
+  # Para ejecutarlos debemos tener permisos root o administrativos 
+   
+  # sudo tcpdump Con este comando me van a salir en tiempo real informacion, de todos los paquetes que estan entrando y saliendo 
+  
+  # tcpdump -h Este parametro nos dara una guia de todos los parametros que podemos usar con este comando 
+  
+  # sudo tcpdump -i wlpzs0 Si le pasamos este parametro y le indicamos la tarjeta wifi, me mostrara los datos que estan entrando o saliendo por la tarjeta wifi 
+  
+  # Ya que este comando mostrara todos los paquetes que estan entrando o saliendo, o los paquetes que estan entrando y saliendo por la tarjeta que le indiquemos lo recomendable es redireccionar el contenido a un archivo para luego analizarlo con algun editor de texto  
+  
+
+# Decimo Tercero
+
+  # ethtool
+
+  # ethtool -h Este parametro nos proporcionara una guia o listado de los diferentes parametros o formas de uso que podemos darle a este comando 
+
+  # ethtool enp8s0 Este es una de la formas mas sencillas de usarlo es pasandole el nombre de unas de nuestra tarjetas de red, en este caso estamos apuntando a una tarjeta de red cableada, este me da informacion sobre la tarjeta que informacion:
+	# Los modos de conexion: 
+		# 10baseT
+		# 100baseT
+		# 1000baseT
+		# Esto es en medida de ejemplo 
+	# La velocidad de la conexion 
+	# Entre otras cosas
+	
+
+# Decimo Cuarto
+
+  # nmcli Este comando basicamente nos muestra informacion 
+  
+  # nmcli -h Este parametro nos proporcionara una guia de los diferentes parametros y usos que podemos darle a dicho comando
+  
+  # nmcli dev status Si ejecutamos este comando nos muestra de manera colorida y por columna, primero los dispositivos, segundo el tipo, tercero el estado si esta conectado o no y cuarto la conexion 
+  
+  # nmcli -p Este parametro nos mostrara mucha mas informacion y de manera mas organizada 
+  
+
+# Decimo Quinto 
+
+  # nmap Este comando en la mayoria de los casos no viene instalado, este comando es como la navaja suiza de los comandos de networking, nos permite verificar conexion con servidores, estaciones de trabajo, puertos abiertos, identificar el sistema operativo de ese equipo que estamos localizando en internet, si esta up o si no esta up y tiene reglas de corta fuegos hay muchas formas de utilizar nmap.
+  
+  # nmap -h Este parametro nos mostrara una guia de los diferentes parametros y formas de uso de este comando 
+  
+  # nmap -sV 192.168.1.11 Este es una de la formas mas comun y sencilla de usarlo, pasandole el paramertro -sV y luego ia ip o dominio, este nos debe mostrar informacion de ese equipo que le estamos apuntando 
+  
+  # nmap -p 22 192.168.1.11 Este es otra manera de usarlo es el porametro -p donde le indicamos y le apuntamos a un puerto especifico en este caso el 22, por ejemplo si queremos verificar si nuestro servidor tiene el puerto 22 comunmente conocido como el puerto de SSH en este caso arrojo alguna informaciones dare el ejemplo de 1
+	# PORT STATE SERVICE
+	# 22/tcp open ssh
+  # lo que indica que el puerto 22 de tipo tcp esta abierto 
+  
