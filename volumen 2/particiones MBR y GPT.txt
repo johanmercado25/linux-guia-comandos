@@ -1,0 +1,23 @@
+# particionamiento MBR && GPT
+
+  # Estructura de particion define la organizacion de la informacion en el disco duro
+
+	-Master Boot Record(MBR), es el estandar mas antiguo y compatible con la mayoria de los discos duros.
+	-MBR contiene un gestor de arranque para el S.O. e info sobre particiones.
+	-Maximo 4 particiones y discos duros de 2 TB en MBR
+	-GPT va asociado a UEFI
+	-Maximo 128 particiones y discos duros 18 exabytes (18 mil millones de GB)
+	-GPT mas moderno, funciona con Windows Vista o posterior y distribuciones linux modernas
+
+# Cosas a tomar en cuenta 
+
+  # FAT32
+	- Si tienes tu memoria en FAT32 no podras grabar imagenes de mas de 4 GB 
+	
+	- En un sistema de archivos FAT32, el tamaño máximo de un archivo individual es de 4 GB menos 1 byte (exactamente 4,294,967,295 bytes). Esto significa que no puedes almacenar un archivo que sea mayor a 4 GB en una unidad formateada en FAT32.
+
+	- Si necesitas almacenar archivos más grandes, puedes considerar cambiar el sistema de archivos a exFAT o NTFS, que no tienen este límite (al menos no a niveles prácticos para el usuario promedio). Sin embargo, ten en cuenta la compatibilidad del sistema de archivos con los dispositivos que planeas usar. Por ejemplo:
+
+	- FAT32 es ampliamente compatible, pero tiene el límite de 4 GB por archivo.
+	- exFAT es compatible con la mayoría de dispositivos modernos y admite archivos de tamaño mucho mayor.
+	- NTFS es ideal para sistemas Windows, pero puede tener problemas de compatibilidad con algunos dispositivos como televisores o cámaras.

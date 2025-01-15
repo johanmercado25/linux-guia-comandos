@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# OCULTAR ARCHIVOS && DIRECTORIOS
+- Colocar un punto(.) delante de cualquier archivo lo combierte en un archivo oculto, pero en realidad no es que esta oculto si no que se ignora hasta que quiera verlo
+

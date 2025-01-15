@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# ps 
+- Este comando nos va a permitir listar todos los demas procesos 
+
+# ps -ef
+- Este parametro nos lista todos los procesos por orden de PID
+
+# pstree -p
+- Este muestra los procesos en diagrama de arbol, aqui se muestran los procesos hijos los PID e HILOS ademas que estan encerrados entre llaves
+
+# pstree -sp nombreDelProceso
+- Este mostrara el procesos padre y los procesos hijos osea que te muestra el proceso que le indiques y todos los demas procesos que se deriven de ese proceso
+
+
+# Listar los servicios y los estados de estos con systemctl
+- Lo que vamos a hacer es listar todos los servicios que hay en el sistema y conocer sus estados si esta en:
+- Ejecucion 
+- Si no lo esta 
+- Si tiene algun error  
+
+- Una unidad de systemd es cualquier lotes relacionados de procesos
+
+
+# systemctl
+-Este comando por si solo te carga todas las unidades activas del sistema 
+
+# systemctl > /home/usurio/systemctl-units.txt
+- Asi podemos redirecionar los datos a un archivo de texto 
+
+# systemctl --all 
+- Este mostrara todos los procesos que hay en el sistema ya sea que este activa o inactiva
+
+# systemctl list-unit-files
+- Este parametro nos muestra todas las unidades que tenemos los archivos de unidad
+
+-Los usuarios administradores de linux mayormente interactuan con los archivos de servicio, rara veces te vas a tener que preocupar por los demas archivos de unidad
+
+# systemctl list-unit-files --type=service 
+- Este parametro solo nos mostrara lo que son de tipo servicio
+
+-- Los Cuatro Estados Mas Comunes De Un Servicio
+-enable: Este servicio se inicia automaticamente al arrancar el sistema y esta listo para usarse
+-disable: Este servicio no se inicia al arrancar y para poder utilizarlo debes iniciarlo manualmente si lo necesitas
+-static: Este Servicio no se inicia ni cuando arranca el sistema ni manualmente, solo se ejecuta si otro servicio lo requiere
+-masked: El servicio esta completamente bloqueado y no se puede iniciar mediante ninguna circunstancia
+
+
+# systemctl list-unit-files --type=service --state=enabled
+- Este parametro solamente te mostrara los servicios que estan Activos(enable)
+
+# systemctl list-unit-files --type=service --state=disabled
+- Este parametro solamente te mostrara los servicios que estan desactivado(disable)
+
+# systemctl list-unit-files --type=service --state=static
+# systemctl list-unit-files --type=service --state=masked
+

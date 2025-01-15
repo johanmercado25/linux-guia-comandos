@@ -1,0 +1,191 @@
+
+#!/bin/bash
+
+# GESTION DE USUARIOS
+
+
+# Creacion de usuarios con el useradd
+
+# sudo useradd nombreUsuario
+- Este comando nos creara un nuevo usuario
+# id nombreUsuario
+- Esto introducira el id del usuario que hemos creado
+# sudo passwd nombreUsuario
+- Este comando le asignara una contraseña al usuario que hemos creado
+# ls -la /home
+- Este comoando te mostrara si el usuario a sido creado y agregado a /home
+- Si el comando adduser no crea /home/nombreUsuario, lo que tenemos que hacer para crear el comando con su directorio y demas
+# sudo useradd -mU nombreUsuario
+- En este caso si nos va a crear el directorio /home
+- Si mi usuario no es administrador yo como usuario no puedo acceder a las carpetas de otro usuarios
+# cat /etc/passwd
+- En este directorio se almacenan todos
+
+# sudo adduser nombreUsuariop
+- Este comando existe en debian y nos crea un usuario y sus directorios && directamente nos pide crear una contraseña && informacion adicional que no son obligatorio llenar
+
+
+# CREACION USUARIO DE SISTEMAS CON USERADD
+
+# sudo useradd -rs /bin/false nombreUsuario(servicio)
+- Este comando nos crea un usuario de sistemas el parametro (-r) este parametro lo que hace que crea un usuario de sistemas con id real en el rango numerico correcto para usuario de sistemas (-s) los que especifica es shell de inicio de sesion
+- /bin/false Esto no hace nada && evita que el usuario inicie sesion en el sistema
+
+# CAMBION DE CONFIGURACION PREDETERMIDAD DE USERADD
+- Tenemos una serie de archivos y directorios, donde se puede realizar dicha configuracion, la configuracion de useradd se distribuye en varios archivos && directorios 
+
+# LOS LISTAREMOS CON EL COMANDO LS
+
+# ls /etc/default/useradd
+# ls /etc/login.defs
+# ls /etc/skel
+
+# cat /etc/default/useradd
+- Esto nos dara una previzualisacion de lo que hay dentro del fichero y en el podemos ver que hay una serie de parametros configurables
+
+
+# PERSONALIZAR DIRECTORIOS DE USUARIOS
+- Lo que son documentos,musica,videos entre otros, que se crean cuando creamos un nuevo usuario
+- Estos directorios que se configuran cuando creamos un usuarios se configuran desde el directorio /etc/xdg/user-dirs.default
+
+# cat /etc/xdg/user-dirs.default
+- Esto nos dara una vizualisacion de lo que hay dentro de este directorio y vemos que lo que hay unos pares nombre valor, los nombres no se pueden cambiar los valores si 
+- Aqui lo que hacemos es asignar los directorios que van luego del usuario /home/usuario/directorio estos son los directorios que deseas incluir cuando deseas iniciar un entorno grafico 
+- Tambien puedes comentar cualquier directorio que deseas excluir o cambian los directorios a los cuales se le asignan los nombres
+- Los usuarios pueden cambiar su propia configuracion en el directorio .config que esta en su directorio personal
+
+# pwd
+- Este comando te mostrara el directorio en el que te encuntras, si no estas en tu directorio /home/usuario debes ir a tu directorio por que aqui es donde se encuentra ese fichero
+
+# cat .config/user-dirs.dirs
+- Este nos dara una vizualizacion, de lo que son los directorios y sus valores para lo que son
+- $HOME es una variable de entorno que indica cual es el directorio personal del usuario y si quieres saber que valor tiene el $HOME
+- Usamos el comando:
+# echo $HOME
+- Este te indicara cual es tu usuario personal /home/usuario
+# cd $HOME
+- Esto lo que hace es sustituir el $HOME por el vamor asosiado a el $HOME y esto te evitara tener que escribir toda la ruta
+# cd $HOME/Documents
+- Este tambien es util para moverte rapidamente entre los directorios de un usuario
+# nano .config/user-dirs.dirs
+- XDG_DESKTOP_DIR="$HOME/Escritorio" los cambiamos XDG_DESKTOP_DIR="$HOME/MiEscritorio"
+-Es importante saber que el directorio que le pongamos debe existir antes de que apliquemos los cambios
+- Ahora debemos usar el comando de actualizacion:
+# xdg-user-dirs-update
+- Este comando hara que los cambios se apliquen en el sistema tambien hay otra forma de hacer el cambio
+# xdg-user-dirs-update --set DESKTOP $HOME/MiEscritorio
+- Esta es una manera de hacer los cambios mediante termonal sin usar un editor de texto
+# xdg-user-dirs-update --force
+- Este comando restaura todos los valores a la forma predetermida como vinieron
+- Ya lo que queda es cerrar sesion y volver a iniciar && tendras los cambios realizados
+
+
+# CREACION DE GRUPOS CON GROUPADD
+
+# id nombreUsuario
+-Con este comando entre las informaciones que nos da podemos ver los grupos a los que pertenece
+
+# sudo groupadd nombreGrupo
+-  Este comando nos creara un nuevo grupo
+
+# sudo groupadd -r ServiceNombreGrupo
+- Este comando nos creara un grupo de sistema,
+
+
+# ASIGNAR UN USUARIO A UN GRUPO
+
+# sudo usermod -aG nombreGrupo nombreUsuario
+- Esate comando con estos parametros le asigna un grupo a un usuario
+
+# sudo usermod -aG nombreGrupo1, grupo2, gurpo3 nombreUsuario
+- Este mismo comando separando los grupos por comas (,) le podemos asignar varios grupos a un mismo usuario
+
+# cat /etc/group
+- En este fichero podemos visualizar todos los grupos del sistema
+
+# sudo nano /etc/group
+- Editando el fichero con un editor de texto podemos configurar los grupos desde el fichero sin tener que hacerlo por comando pero a diferencia de arriba aqui les asignaremos a los grupos los usuarios y no podra ver espacios para separar los usuarios como hacemos con el comando
+! nombreGrupo:x:usuario1,usuario2,usuario3
+
+
+# CREAR USUARIOS MEDIANTE ADDUSER
+
+# sudo adduser nombreUsuario
+- Este comando nos creara un nuevo usuario
+! ls /home
+- Este comando ya conocemos nos dara una visualizacion de los directorios que se encuentran en este directorio, aqui podremos visualizar que ya al usuario se la a creado su directorio && tambien poder ver los demas usuarios que se encuentran en este directorio
+! cat /etc/passwd
+- Aqui podremos ver los usuarios y sus datos correspondientes
+
+# CREAR USUARIOS DE SISTEMAS MEDIANTE ADDUSER
+
+# sudo adduser --system --no-create-home --group serviceNombreUsuario
+- Con este comando && el parametro --system para indicarle que el usuario es de sistemas, el parametro --no-create-home este le indica que no le cree un directorio en el directorio /home, parametro --group lo agrega a su propio grupo
+! cat /etc/passwd
+- Aqui comprobamos la creacion del usuario
+
+
+# CREAR GRUPOS DE USUAROS && SISTEMAS
+
+# sudo addgroup --system serviceNonbreGroup
+- Este comando nos creara un grupo de sistemas
+
+
+# ELIMINAR USUARIOS CON USERDEL
+
+# sudo userdel nombreUsuario
+- Este comando elimina un usuario del sistemas esto eliminara el usuario y su directorio pero si tiene archivos fuera de ahi relacionados a dicho usuario deberas encontrarlo  y hacer los respectivos pasos para eliminarlo
+
+# sudo userdel -f nombreUsuario
+- Este parametro lo que hace que elimina un usuario aunque el usuario este logeado y utilizando la cuenta
+
+
+# ELIMINAR USUARIOS CON DELUSER
+
+# sudo deluser nombreUsuario
+- Este comando elimina un usuario 
+
+# sudo deluser --remove-all-files --backup nombreUsuario
+- Esto hace una copia de seguridad de los archivos del usuarios antes de eliminar el usuario y todos sus archivos
+
+
+# ELIMINAR GRUPOS CON DELGROUP
+
+# sudo delgroup nombreGrupo 
+- Este comando eliminara un grupo, pero no elimina un grupo principal de un usuario existente
+
+# sudo delgroup --only-if-empty nombreGrupo
+- Este parametro lo que hace es que elimina un usuario solo si esta vacio, solo se eliminara si no contiene ningun mienbro
+
+
+# BUSQUEDA/GESTION ARCHIVOS DE UN USUARIO
+! cuando eliminamos un usuario hemos dicho que se eliminan todos los archivos de su directorio principal pero no lo que tegan que ver con el y esten fuera de este ahora veremos como buscarlo mediante el:
+! Sabes que en linux tambien cuando creas un fichero o directorio ese archivo pertece a dicho usuario
+! Por ejemplo cuando creamos un usuario ese usuario pertenece a quien lo haya creado si lo haces con sudo pertenece a root
+- GID
+- UID
+
+# find
+- Este comando que es de busqueda nos ayudara a buscar los archivos mediante el GID && el UID
+
+# sudo find / -uid numeroUID
+- Aqui lo que le indicamos es que nos busque desde la carpeta raiz todos los archivos que pertenezcan a ese UID que pertenecia a ese usuario eliminado o existente
+
+# sudo find /var -name nombreUsuario
+- Este parametro buscara los archivos por el nombre de usuario
+
+# sudo find / -group nombreGrupo
+- Este parametro buscara los archivos por el nombre del grupo
+
+# sudo find / -nousuer nombreUsuario
+- Este parametro buscara los archivos de un usuario eliminado por nombre de usuario
+
+# sudo find / -nougroup nombreGrupo
+- Este parametro buscara los archivos por el nombre de un grupo eliminado 
+
+
+
+
+
+
+

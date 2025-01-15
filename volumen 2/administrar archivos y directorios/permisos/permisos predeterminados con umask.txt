@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# PERMISOS PREDETERMINADOS CON UMASK
+- Aqui veremos por que los archivos se crean con un conjunto de permisos predeterminados
+
+
+# umask
+- Esta es la mascara del modo de la creacion de archivos de usuarios que es quien controla este comportamiento
+! Si vemos que nos sale (0002) esto quiero decir que eso se le restara en la forma octal; este es nuestro valor umask
+! Si en directorio tenemos permisos de 0777 && en ficheros (0666)
+! Cuando cree un directorio se creara con los permisos (0775) && cuando cree un fichero (0664)
+ 
+
+# Configurar umask de forma simbolica
+
+# umask -S
+- Este nos dara la informacion en formato simbolico
+
+
+# umask 0022
+- Esto nos cambiara el valor de umask temporalmente mientras estemos logueado en la sesion actual
+
+# sudo nano /etc/login.defs
+- En este fichero podremos cambiar el valor de umask de forma permanente
+
+! umask es una mascara de bit que se resta de los permisos predeterminado para poder establecer los permisos reales de archivos && directorios 

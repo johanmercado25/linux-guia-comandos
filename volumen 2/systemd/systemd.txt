@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# ¿Que vas a aprender?
+
+-Saber si linux usa systemd
+-Procesos
+-Listadosde servicios y sus estados
+-Iniciar,Detener,Habilitar y Desabilitar servicios
+-Niveles de ejecucion
+-Diagnostico de arranques lentos
+
+# Procesos && Servicios 
+
+# Procesos
+- Procesos: Son las tareas que esta realizando un ordenador en un momento dado, cada vez que ejecutas una accion y abres un programa esto se hace a traves de un proceso, ese proceso se llama PID que consume recursos de memoria como es la CPU y puede comunicarse con otros procesos
+# PID
+-  El PID es un identificador unico que se le asigna a cada proceso y es inrrepetible
+
+# Servicios
+- Servicios: Estos son programas que se ejecutan en segundo plano, sin que necesites interactuar con ellos directamente, este progrma proporciona funciones esenciales para el sistema operativo
+# Por EJEMPLO 
+# SSH
+- Este servicio te permite conectarte al navegador de forma remota
+# HTTP 
+- Este servicio lo que te permite visualizar las paginas que navegas por el internet
+
+- El servicio de impresion lo que hace es que cuando imprimes un documento, puedas imprimirlo
+- Los servicios suelen iniciarce al arramcar el sistema y continuan ejecutandose hasta que este se apaga o se reinicia 
+# ¿Que relacion hay entre los servicios y los procesos?
+- Los servicios son un tipo especial de proceso, muchos de los procesos que ves en ejecucion, son partes de los servicios que proporcionan funcionalidad al sistema 
+# Hay un proceso que es INICIAL que es ?
+# PID1
+- Este es el proceso especial inicial que se encarga de gestionar todos los demas procesos, esto quiere decir que es el primer proceso que se inicia y luego inicia el resto de procesos 
+
+# ¿Que es un proceso?
+-Los procesos son una o mas instancias en ejecucion de un programa, cada tarea que hay en un sistema linux es realizada por un proceso, ademas los procesos pueden crear copias independientes de si mismos, es decir pueden biforcarses y estas copias se llaman hijos y la original es el padre cada hijo ademas tiene su propio PID Unico y su propia asignacion de recursos del sistema como puede ser CPU o MEMORIA
+# Los hilos
+- Estos son procesos ligeros que sae ejecutan en paralelo y comparten recursos de sistemas con sus padres, algunos procesos se ejecutan en segundo plano y no inteactuan como los usuarios estos procesos son los llamados SERVICIOS o DEMONIOS y su nombre suelen terminar con la letra (d)
+# Como pueden ser:
+-httpd
+-sshd
+-systemd 
+-Ademas cada sistema linux ejecuta primero el PID1 y luego este manda lo demas procesos 
+
+# ps 
+- Este comando nos va a permitir listar todos los demas procesos 
+

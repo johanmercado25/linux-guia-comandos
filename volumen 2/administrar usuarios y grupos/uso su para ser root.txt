@@ -1,0 +1,74 @@
+#!/bin/bash
+
+# USO DE SU PARA SER ROOT
+! Aqui veremos como puedes logearte de manera administrador de forma permanente 
+
+# su -l
+- Este parametro nos logeara como usuario root o administrador
+
+# AMPLIACION DEL TIEMPO DE ESPERA CONTRASÑA SUDO
+! En la mayoria de distribuciones linux, sudo almacena en cache las contraseñas durante un intervalo predeterminado de 15 Minutos despues de este tiempo hay que volver a ingresar la compraseña
+
+# sudo nano /etc/sudoers.tmp
+- Este es el archivo de configuracion del sudoers aqui podras alargar el tiempo de espera para que la contraseña sea guardada
+
+# sudo visudo
+- Con este comoando vizualizaremos el fichero sudoers.tmp && luego esbribimos
+! Defaults timestamp_timeout=60
+- Aqui le estamos indicando que dure 60 minutos la password de root y tener en cuenta que si lo ponemos en 0 siempre va a pedir la contraseña && si estableces el valor en -1 nunca la va a pedir la va a pedir la primera vez y luego de ahi no la volvera a pedir
+
+
+# CONFIGURACIONES SUDOERS INDIVIDUALES
+- Vamos a establecer diferentes configuraciones de sudo para tus usuarios
+
+# SI TENEMOS VARIOS USUARIOS Y QUEREMOS PONERLE UN TIEMPO DE ESPERA DISTINTO
+! Nos dirigimo al fichero
+
+# cd /etc/sudoers.d
+- Este comando nos dirige hacia ese directorio
+# sudi visudo -f nombreUsuario
+- Esto nos abrira un fichero .tmp en cual debemos colocar
+! Defaults timestamp_timeout=30
+- Si  hacemo un ls vemos como el fichero se encuentra creado, me imagino que lo guardaste
+
+
+# GESTION DE CONTRASEÑAS ROOT
+
+# sudo su -l
+- Usamos este comando para loguearnos
+# echo $HOME
+-Este comando nos dara una vizualisacion del usuario con el que estemos logueado en el momento
+
+# passwd
+- Este comando nos permitira cambiar la contraseña de root pero esto solo si estamos lgueado como root
+
+
+# CAMBIAR SUDO PARA QUE NO SOLICITE PASSWORD root SI NO LA DEL USUARIO LOGUEADO ASIDNANDOLE LOS PERMISOS root
+
+# sudo visudo
+- En este fichero le asignamos los perimos a el usuario para que tenga nivel que el administrador
+- Nos desplasamos hasta encontrar la linea # User privilege specificacio
+! nombreUsuario ALL=(ALL:ALL) ALL
+- Este otrogara al usuario permisos de administrador como podremos ver que tendra los mismos privilegios que root
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

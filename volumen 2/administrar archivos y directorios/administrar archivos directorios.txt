@@ -1,0 +1,40 @@
+#!/bin/bash
+
+#  CREAR ARCHIVOS/DIRECTORIOS 
+- Linux proporciona controles basicos solidos para el acceso a archivos && directorios con privilegios configurables 
+- Cada archivo && directorio tiene tres niveles de propiedad incluyendo: Usuarios(u), Grupos(g) && Otros(o)
+- Tambien cuenta con multiples niveles de acceso incluyendo: Lectura(r),Escritura(w) && Ejecucion(x)
+- Puedes proteger tu archivos personales && controlar quien tiene acceso a ellos
+- El usuario root puede gestionar el acceso a comandos, scripts, archivos, compartidos && archivos de sistemas
+- En un sistema linux tantos los usuarios humanos como los de servicios de sistemas tiene cuentas de usuarios 
+- Algunos servicios de sistemas necesitan cuentas de usuarios para controlar los privilegios al igual que los usuarios humanos
+- Cada archivo tiene 3 tipos de propiedad: Propietario(u), Grupos(g) && Otros(o)
+- Aveces otros se expresa como mundo(o)
+- El propietario es solo un Usuario(u)
+- Cada archivo tiene 3 modos de permiso:
+- Lectura(r),Escritura(w) && Ejecucion(x)
+- Estos permisos controlan que usuario puede leer, editar o eliminar un archivo && que usuarios pueden ejecutar un comando
+- Cada archivo contiene tambien 3 modos especiales
+- stackbit, setuid && setgid
+- Los modos especiales controlan quien puede mover, eliminar o renombrar un archivo && quien puede ejecutar un comando con privilegios elevados
+
+- Los permisos de directorios controlan que usuario pueden editar o ingresar a un directorio && quien puede leer, editar, agregar o eliminar archivos de un directorio 
+- El principio fundamental de seguridad en linux utiliza los privilegios minimos necesarios para realizar el trabajo
+- En un sistema linux tambien llamado superusuario tiene acceso a todo puede hacer casi cualquier cosa incluyendo editar && eliminar los archivos de otros usuarios ingresar a cualquier directorio && ejecutar cualquier comando
+- Los usuarios normales o sin privilegios pueden asumir temporalmente los poderes de root con los comandos (sudo) o (su) 
+- Cada usuario tiene un identificador unico que es el el UID && pertenece como minimo a un grupo que es, del propio de su usuario
+ 
+
+# stat --format=%a:%A:%U:%G /etc
+- Este comando le damos formato mediandte el parametro (--format=%a:%A:%U:%G) y luego le pasamos el directorio que queremos vizualizar los parametros que le pasacos es lo que queremos que nos traiga, el orden y de que forma
+! Tambien podemos usar el parametro (--help) para obtener mas informacion
+
+
+# MODOS ESPECIALES stackbit, setuid && setgid
+! Los modos especiales setuid && setgid: Estos elevan los permisos elevan los permisos de usuario y grupo al mismo nivel que el propietario del archivo
+- Esto solo se usa para casos especiales && con mucho cuidado por que la elevacion de privilegios es un riesgo muy elevado de seguridad
+! stackbit: Este impide que aqui que no sea propietario del archivo o alguien con privilegios root elimine o renombre o mueva  archivos que no sean de su propiedad en un directorio
+- Por EJEMPLO: si yo tengo acceso a un directorio && mas usuarios tienen acceso a un mismo directorio pero hay archivos en ese directorio que son de otro usuario && no son de mi propiedad, esto impide que no borre archivos que no son de mi propiedad
+
+
+

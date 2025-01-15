@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# COPIAS DE SEGURIDAD CON RSYNC/CP
+
+! Introduccion
+! Seleccion archivos a respaldar
+! Seleccion a archivos a restaurar desde copias de seguridad
+! Metodo de copia de seguridad local mas sencillo
+! Automatizar copias seguridad locales simples
+! Uso de rsync para copias de seguridad locales
+! Realizar transferencia seguras de archivos remotos con rsync a traves de ssh
+! Automatizar transferencias rsync con cron y ssh
+! Exclusion archivos de la copia de seguridad
+! Inclusion de archivos seleccionados para la copia de seguridad
+! Gestion de inclusiones con un archivo de inclusion simple
+! Gestion de inclusiones && exclusiones con un archivo de exclusion
+! Limitar ancho banda con rsync
+
+# INTRODUCCION
+
+# ¿Como se hacen las copias? Comandos cp && rsync
+
+- CP: Este comando te permite copiar y es ideal para copias simples && directas
+- rsync: Este es mas avanzado que sincroniza archivos de forma eficiente && incluye cambios y eliminaciones && este es perfecto para copias de seguridad completas y copias regulares
+
+! ¿Donde se guardan? Dispositivos USB, de respaldo o en la nube
+
+- Donde guardamos copias de seguridad ?
+! Una es dispositivos USb que son muy practicos para usuarios individuales
+! servidores de respaldo para multiples usuarios y grandes cantidades de datos, asi como servicios en la nube que esto ofrecen seguridad && accesubilidad desde cualquier lugar
+- Que consideraciones hay que tener en cuenta ?
+! La longevidad los medios de almacenamiento digital pueden fallar, por lo que es importante que tengas varias copias periodicas && en varios dispositivos, tener multiples copias en diferentes dispositivos aumenta la seguridad de tus datos es muy recomendables hacer pruebas para tener en cuanta que tus cipias de seguridad funcionen correctamente
+! Como aspecto avanzado el rsync te permite personalizar las copias de seguridad incluyendo la seleccion de archivos, permisos && sincronizacion de tiempos, en la configuracion de seguridades de respaldo nos permite la gestion de copias de seguridad de multiples usuarios && las copias de seguridad remota se hacen atraves de redes como ssh o vpn
+
+
+! Consideraciones: Longevidad, Redundacia, Pruebas
+! Aspectos avanzados: rsync, configuracion servidores de respaldo, copias seguridad remotas
+
+
+# SELECCION ARCHIVOS A RESPALDAR
+! Copias en linux
+
+- /boot/grub: Si contiene alguna personalizacion como temas, imagenes de fondos o fuentes
+- /etc: Contiene archivos de configuracion del sistema
+- /home: Archivos personalesde los usuarios
+- /mnt: Puntos de montaje temporales del sistema de archivos. Haz una copia de seguridad si tienes puntos de montaje que deseas preservar
+- /opt: Para aplicaciones propietarias u otras aplicaciones no instaladas  de la manera standar 
+- /root: Archivos personales del usuario root
+- /srv: Datos para servidores como web, FTP && servidoresrsync
+- /tmp: Contiene datos temporales que se actualizan o eliminan automaticamente segun sea necesario. Algunos de los datos en /tmp se persistentes, por ejemplo, archivos creados por el usuario y algunos servicios del sistema, y deben ser respaldados
+- /var: Almacena muchos tipos de datos como archivos de registro, colas  de correo, trabajos cron && datos para servicios del sistema, aunque la mayoria de las distribuciones han migrado a usar /srv para los servicios de sistema
+- /proc,/sys && /dev son pseudocodigos que existen solo en la memoria && no deben ser respaldados
+
+
+# QUE ARCHIVOS COPIAR && NO COPIAR
+! No restaurar /etc/fstab, con la nueva instalacion se crean nuevos identificadores unicos universales (UUID)
+! Precaucion  al restaurar archivos /etc u ocultos en directorio personal ($HOME)
+! Restaurar desde una copia a una version/distribucion diferente de linux:Puede haber problemas
+! Restaura los archivos uno a uno

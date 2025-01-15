@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# CONFIGURAR PROPIEDAD ARCHIVOS DIRECTORIOS
+-Aqui veremos como podemos cambiar la propiedad de un archivo sea de un usuario o grupo diferente
+
+
+# sudo chown-v nombreUsuario: nombreArchivo
+- Esto cambiara el propietario de usuario de un archivo es importante dejar un espacio luego de que indiquemos el usuario, por que si no pensara que es el grupo
+
+# sudo chowm -v :nombreGrupo nombreArchivo
+- Este comando cambiara el propietario de grupo de un archivo
+
+# sudo chowm -v nombreUsuario:nombreGrupo nombreArchivo
+- Este comando cambiara tando el propietario de usuario como de grupo
+
+
+# CAMBIO DE PROPIEDAD EN LOTES
+- El comando chown permite operar en listas de archivos
+
+# sudo chown -v nombreUsuario:nombreGrupo archivo1 archivo2 ...
+- Este cambia la propiedad de usuario o grupo por lotes
+
+# sudo chown -v nombreUsuario:nombreGrupo *extension
+- Este comando nos cambiara la propiedad tanto de usuario como de grupo de todos los archivos de la extension que le pasemos o del nombre que le indiquemos
+
+# sudo chown -v nombreUsuario:nombreGrupo nombre*
+- Este comando nos cambiara la propiedad del usuario o grupo de todo lo que empiece por lo que le hayamos indicado
+
+# sudo chown -vR nombreUsuario:nombreGrupo nombreDirectorio
+- Esto cambiara la propiedad de usuario como grupo && tambien efectuara los cambios en los demas directorios y ficheros que se encuentren dentro
+
+# sudo chown -vR --from numeroID:numeroID nombreDirectorio
+- Este te permite hacer los cambios por la numeracion de ID (1000:1000)
+
+# sudo /Directirio -user nombreUsuario -exec chown -v nombreUsuarioNew{}\;
+- Este comando lo que hace es que busca todos los archivos que pertenezcan al usuario, en la ruta que le indiquemos, este le otorgue los derechos de propiedad al Usuario nuevo que indiquemos
+! (.) tambien podemos usar el punto para indicarle que parata desde el directorio actual donde nos encontremos
+- 

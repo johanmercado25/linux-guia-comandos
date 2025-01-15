@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# NIVELES DE EJECUCION CON SYSTEMD!!
+- systemd a revolucionado la forma en que los sistemas linux, se inician y gestionan los servicios remplazo al antiguo sistema sysVinit y ofrece una forma mas flexibe y potente de controlar los estados de inicios del sistema los abjetivos en systemd son como perfiles de arranque que definen cuales servicios inician y cuales no y que tipo de entorno proporciona al sistema estos objetivos son similares a los antiguos niveles de ejecusion en sysVinit, pero ofrece una mayor granularidad y flexibilidad 
+
+# Como Objetivos tenemos!
+
+! Graphical Target:
+-Este es el objetivo mas comun y se utiliza, para incluir un entorno de escritorio completo con un gestor de ventanas aplicaciones graficas y servicios relacionados es ideal para el uso diario de un ordenador y es el entorno que siempre vemos en las distribuciones 
+
+! Multi user target:
+- Este objetivo inicia el sistema en modo multi usuario pero sin un entorno de escritorio grafico, es util para servidores o estaciones de trabajo que no requieren una interfas grafica 
+
+! Request target:
+- Este objetivo se utiliza para iniciar el sistema en un modo de recuperacion, lo que tambien permite solucionar problemas o restaurar el sistema
+
+! Emergency target:
+- Este es un objetivo que inicia el sistema en modo de emergencia muy basico con un minimo de servicos en ejecusion y se utiliza cuando el sistema no puede arrancar en modo normal 
+
+
+# VERIFICAR SI EL SISTEMA ESTA EJECUTADO && EN QUE ESTADO?
+
+# systemctl is-system-running
+- Si el sistema esta corriendo correctamente deberia aparecerte RUNNING, si sale DEGRADED hay que verificar por que lo esta haciendo, ya que esto indica que tiene algunas limitaciones o probleamas
+
+# systemctl get-default
+- Este nos mostrara el sistema u objetivo predeterminado de arranque
+
+# runlevel
+- Este comando nos muestra el nivel de ejecucion actual y por ejemplo si nos muestra:
+! N 5
+- Esto significa que pertenece al Graphical Target
+
+# sudo systemctl rescue
+- De esta manera se ejecutaria el sistema en modo rescate, *OJO* esto reiniciara el equipo
+
+# sudo systemctl emergency
+- Esto reiniciaria el sistema en modo emergencia
+
+# sudo systemctl reboot
+- Esto reiniciaria el sistema en modo predeterminado. *OJO* el reinicio se ara en el sistema que tengas seleccionado como  predeterminado
+
+# sudo systemctl isolate multi-user.target
+- Este comando te reinicia en un GTU diferente pero sin cambiar el predeterminado. *OJO* el (multi-user) es el modo que quieras iniciar, si quisieras hacerlo en el modo emergency seria (emergency.target
+
+# sudo systemctl set-default multi-user.target
+- Este comando se utiliza si lo que quieres es establecer un inicio predeterminado diferente al modo en que esta utilizariamos. *OJO* el (multi-user) es el modo que quieras iniciar, si quisieras hacerlo en el modo emergency seria (emergency.target)
+
+
+# LISTAR LOS ARCHIVOS EJECUTIVOS A NIVELES DE EJECUCION && SUS ENLACES SIMBOLICOS
+
+# ls -l /lib/systemd/system/runlevel*
+- Aqui se vizualizaran los diferentes archivos de objetivos 
+  - poweroff.target
+  - rescue.target
+  - multi-user.target
+  - multi-user.target
+  - graphical.target
+  - reboot.target
+  -  otros...
+
+# systemctl list-dependencies graphical.target
+- Este comando se usa para listar las dependencias de un objetico
+# systemctl list-dependencies graphical.target > /home/usuario/documentos/nombreDelArchivo.txt
+- Este comando lo utilizamos si no quiesieramos verlo por terminal y dirigirlo a un archivo

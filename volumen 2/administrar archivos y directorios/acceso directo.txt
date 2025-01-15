@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# ACCESO DIRECTO
+! Hay dos tipos de enlace en linux unos son los enlaces simbolicos && otros son los enlaces duros
+
+- Enlaces Simbolicos: Estos se utilizan tanto para archivos como para directorios
+- Enlaces Duros: Estos enlaces solo se utilizan para archivos
+
+# ln
+- Este es el comando que se utiliza para hacer enlaces, tanto simbolicos como duros
+
+# ln -s rutaArchivo/rutaArchivo accesoArchivo
+- Este comando te crea un acceso directo en $HOME
+
+# ln rutaArchivo/archivo archivo
+- Los enlaces duros son copias de archivos

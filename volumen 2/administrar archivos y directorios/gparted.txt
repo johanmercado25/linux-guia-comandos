@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# GPARTED GESTION DE PARTICIONES
+- Intro
+- Vizualizar particiones, sistemas de archivos && espacios libre
+- Creacion tabla particiones
+- Eliminar && crear particiones
+- Eliminar sistemas de archivos sin eliminar particion
+- Recuperacion de particion eliminada
+- Cambiar tamaño && mover particion
+- Copiar una particion
+- Administracion && gestion con gparted
+
+# Introduccion e instalacion 
+- Gparted: es el gestor de paquetes de Gnome, es una herramienta que podemos utilizar para realizar particiones de nuestro discos o unidades extraibles
+! Tiene una agradable interfaz grafica, para el comando de gestion de particiones 
+! Este es el comando de linux para todo lo que se refiere al sistemas de archivos
+! Este te va a permitir: Crear, Eliminar, Mover, Copiar && Redimensionar particiones && sistemas de archivos && crear nuevas tablas de particiones con solo unos pocos clics
+! Otra caracteristica es el rescate de datos && la gestion de etiquetas && el UID
+! Las etiquetas en la particiones && los sistemas de archivos son utiles para identificar particiones && sistemas de archivos de manera amigable && para dar a los sistemas de archivos nombres cortos && faciles de recordar 
+! Sin una etiqueta, un sistema de archivo se identifica por un largo UID
+
+# gparted
+- Este comando te dira si tienes gparted instalado e iniciara el programa
+! Para acceder a gparted necesitas acceso como root, ya que vas a tratar con los archivos del sistema
+
+# Virtualizar Particiones
+- Iniciamos Gparted 
+- En el apartado de dispositivo podremos ver informacion sobre la unidad de almacenamiento
+
+# Copiar particiones
+- Gparted viene con una opcion llamada copia que te permite copiar particiones

@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# ADMINISTRAR USUARIOS && GRUPOS
+
+# mkdir -v nombreDirectorio
+- Esto nos crea un directorio si no existe
+# mkdir -p nombreDirectorioExistente/nuevoDirectorio/nuevoDirectorio
+- Esto nos crea subdirectorios dentro de un directorio que ya tengamos creado para eso el parametro (-p) de padre que quiere decir que nos creara hijos de ese directorio
+# tree nombreDirectorio
+- Este comando nos hara una vizualizacion de los directorios && subdirectorios del directorio que le indiquemos
+! Para crear un directorio que este en la raiz (/) necesitamos privilegios de root && como lo hemos hecho con sudo ese archivo pertenece a root
+# mkdir -m 0700 nombreDirectorio
+- Esto nos va a permitir crear un directorio y asignarle los permisos con lo que queremos que se cree
+
+# CREAR LOTES DE ARCHIVOS
+- Prueba de lotes de archivos, para pruebas de permisos o para cualquier pruba que necesite muchos archivos
+
+# touch fichero{00..99}.txt
+- Este comando lo que nos permite es crear ficheros entre el rango que le indiquemos y los va enumerando
+# touch {00..99}fichero.txt
+- Este comando nos creara ficheros enumerados en el rango que le indiquemos pero enumerados al frente o detante && luego el nombre
+
+# yes TextoQueQuieroQueAparezca | head -c 500MB > fichero.txt
+- Este comando nos creara un fichero con un texto que le indiquemos no importa que el texto este separado
+- Lo que estamos haciendo aqui es llenando este fichero con la frase que le indiquemos hasta que este ocupe 500MB && le estamo diciendo que lo haga en el fichero.txt
+
+# for x in {01..100}; do yes textoQueQuieroQueAparezca | head -c 1MB > $x-fichero.txt; done
+- Este comando creara 100 archivos llamados 1-fichero.txt, 2-fichero.txt... que a su vez pesen 1MB llenado con el texto que le indiquemos 
+- Esto lo hacemos iterando mediante un bucle for donde le indicamos que x va a valer desde 01 hasta 100 && cada vez que itere un numero hasta llegar a 100 nos va hacer lo que le indiquemos luego
+
+# RUTAS RELATIVAS && ABSOLUTAS
+
+~ Las rutas de archivos absolutas siempre comienzan en la raiz (/) Por EJEMPLO
+- /etc
+- /boot, entre otros
+
+# ls --group-directories-first
+- Este comando con este parametro te listara los directorios de primero luego los ficheros
+
+~ Las rutas relativas simpre van a empezar en el directorio donde nos encontremos (directorio de trabajo actual) o (current working directory)
+# pwd
+- Este comando nos mostrara el directorio actual de trabajo pwd=(print working directory)
+
+# ELIMINAR ARCHIVOS && DIRECTORIOS
+
+# rm archivo
+- Este comando lo que hara es eliminar todo lo que le indiques 
+
+
+
+
+
+
+
+
+
+
+
+
+

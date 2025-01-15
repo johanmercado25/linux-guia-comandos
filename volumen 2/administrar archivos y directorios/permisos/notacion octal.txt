@@ -1,0 +1,68 @@
+#!/bin/bash
+
+# NOTACION OCTAL
+- Aqui veremos como asignar permisos en la notacion octal que va 0-7
+- Esto se hara haciendo la suma de la numeracion que tenga dicho permiso
+
+# chmod
+- Este comando asigna los permisos
+
+# chmod -v 0600 nombreArchivo
+- Esto le asigna los permisos que le pasemos a dicho archivo y el (-v) nos dara una vision detallada de lo que esta haciendo el comando
+! El primer valor corresponde: as los modos especiales
+! El segundo valor corresponde: al usuario o propietario (u)
+! El tercer valor corresponde: al grupo (g)
+! El cuarto valor corresponde: a otros (o)
+
+# PERMISOS EN DIRECTORIOS
+- Los directorios deben tener el bit ejecutable establecido por que es necesario para ingresar al directorio
+- Por ejemplo no podremos acceder a ello mediante el comando cd
+
+# USO DE MEDIOS ESPECIALES
+-Sticky bit: El bit de adherencia en los permisos de archivos de Unix/Linux; Este se aplica a archivos y directorios cuando tienen propiedad de multiples usuarios, para evitar que los usuarios muevan, renombren o eliminen archivos que no son de su propiedad.
+
+-SetUID: El bit de identificación del usuario, que permite que un archivo se ejecute con los permisos del propietario del archivo, esto quiere decir que podemos elevar cualquier usuario que ejecute permisos a nivel del propietario.
+
+-SetGID: El bit de identificación del grupo, que permite que un archivo o directorio se ejecute con los permisos del grupo propietario del archivo.
+
+# chmod -v 1770 nombreArchivo
+- Cuando le indicamos el bit a 1, esto lo que hace que solo el propietario pueda hacer actuaciones que crea convenientes dicho archivo && no otro usuario por error
+
+# chmod -v 4770 nombreArchivoEjecutable
+- Cuando le indicamos el bit 4, esto habilita que el archivo pueda ser ejecutado por cualquier usuario
+
+# chmod -v 2770 nombreArchivo
+- Cuando le indicamos el bit  , este lo que hace aplica en un directorio para que todos los archivos recien creados en un directorio se asisgnen al mismo grupo, que el propietario del grupo del grupo del directorio, este es muy util para imponer la propiedad correcta en un directorio compartido, esto quiere decir que todos los archivos que creemos dentro de este directorio se crearan, se asignaran al grupo del propietario del quien creo el directorio
+- Este tambien se puede aplicar a archivos cambiandole el grupo al mismo grupo del propietario del archivo
+
+# ELIMINACION DE MODOS ESPECIALES
+- Esto lo hacemos añadiendo un (0) adicional al inicion de la notacion octal
+
+# chmod -v 00770 nombreArchivo
+- Esto eliminara los permisos especiales que le hayamos dado anteriormente, esto tambien se puede aplicar a archivos ejecutables
+# chmod -v =770 nombreArchivo
+- Si le colocamos un (=) tendria el mismo efecto que ponerle los dos (00)
+! Esto aplica para archivos ejecutables tambien
+
+
+# Aplicar permisos por lotes
+
+# chmod 444 nombreArchivo1 nombreArchivo2 ...
+- Esto aplicara los permisos que le indiquemos a los archivos que le pasemos
+
+# chmod -R 777 nombreDirectorio
+- Esto aplicara los permisos al directorio que le indiquemos && a todo su contenido por igual
+
+# chmod 500 *.txt
+- Esto aplicara  los permisos a todos los archivos que terminen como le indiquemos
+
+# chmod 500 hola*
+- Esto le aplicara los permisos a todos archivos que comiencen como le indiquemos
+
+# find . -type f -exec chmod-v 500{} \;
+- Esto hara que todos los ficheros cambien su permisos sin cambiar los permisos de los directorios
+
+# sudo find / -user nombreUsuario chmod-v 500{} \;
+- Esto coge todos los ficheros que pertenecen al usuario que le indiquemos && le otorgara los permisos que le indiquemos
+# sudo find / -user numeroUsuario chmod-v 500{} \;
+- Esto hara lo mismo que el comando anterior pero con el numero del usuario EJEMPLO (1000)

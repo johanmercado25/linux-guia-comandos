@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# DESABILITAR UNA CUENTA DE USUARIO
+
+# sudo passwd -l nombreUsuario
+- Este comando con el parametro (-l) nos bloqueara un usuario && este ya no podra iniciar sesion
+
+# sudo passwd -u nombreUsuario
+- Este comando con el parametro (-u) nos desbloqueara un usuario que hayamos creado && ya podremos iniciar sesion
+
+! El problema que esto no impide que un usuario inicie sesion atraves de un metodo de autenticacion diferente por EJEMPLO SSH, que es un sistema de control remoto para conectarse remotamente, si queremos desactivar completamente una cuenta de usuario es utulisar el usermod
+
+# sudo usermod --expiredate 1 nombreUsuario
+- Este comando con los parametros (--expirete 1), ahora cuando el usuario intente iniciar sesion vera un mensaje de su cuenta a caducado contacte con el administrador del sistema
+
+# sudo usermod --expiredate 1 nombreUsuario
+- Este comando con los parametros (--expirete -1), ahora el usuario volvera a estar activo

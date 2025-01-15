@@ -1,0 +1,35 @@
+# USUARIOS && GRUPOS
+! Temas a tocar 
+  ~ Tipo Usuarios: Humanos y sistema
+  ~ Cada Usuario Identidad Unica(UID) && al menos, una Identificacion de grupo(GID)
+  ~ Usuario Humano: Carpeta Personal /home/usuario
+  ~ Usuarios Puede Pertenecer a Varios Grupos
+  ~ Usuarios de Sistema: Representan Procesos && Servicios del Sistema
+  ~ Root: Usuario Administracion, tiene todos los privilegios
+  ~ /etc/passwd && /etc/group: Listado de todos los Usuarios && Grupos
+
+! Todos los usuarios tienen un grupo principal && pueden ser miembros de multiples grupos
+! Cada usuario humano posee un directorio personal para sus archivos personales, los directorios personales pertenecen a /home && se nombran segun el propietario /home/usuario
+! Los usuarios pueden pertenecer a multiples grupos y la pertenencia a grupos adicionales se llaman grupos suplementarios los usuarios de un grupo tienen todos los privilegios de ese grupo 
+! Los privilegios controlan el acceso a los archivos y comandos && son fundamentales para la seguridad del sistema 
+! Los usuarios de sistema representan servicios && procesos del sistema
+! Los usuarios del sistema necesitan cuentas de usuarios para controlar sus privilegios y no tienen inicios de sesion o directorioen /home
+
+# LOS USUARIOS HUMANOS SE DIVIDEN EN 2 CATEGORIAS
+  ~ El usuario Root o el SuperUsuario que tiene todos los privilegios del sistema esto le da poder de hacer cualquier cosa en el mismo todos los demas usuarios se llaman usuarios normales o sin privilegios 
+  ~ Usuarios Normales se le conceden suficientes privilegios para gestionar sus propios archivos && ejecutar comandos que permite a los usuarios normales utilizarlos, a los usuarios normales se le concede poderes de root limitados o completos atraves de su o sudo 
+
+# COMANDOS
+
+- useradd: Crea nuevos usuarios
+- groupadd: Crea nuevos grupos
+- userdel: Elimina grupos
+- usermod: Realiza cambios en usuarios existentes
+- passwd: Crea && cambia contraseñas 
+
+! Debian: addgroup && adduser
+
+# LISTAR USUARIOS && GRUPOS DEL SISTEMA
+
+- /etc/passwd Aqui se encuentran todos los usuarios del sistema
+- /etc/group Aqui se encuentran todos los grupos del sistema

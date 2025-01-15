@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# LISTADO SISTEMA DE ARCHIVOS
+- Veremos el sistema de archivo que tenemos instalado en nuestro sistema de archivos
+
+# cat /proc/filesystems
+- Con este comando tendremos una vizualisacion del listado del sistema de archivos que haya instalado en nuestro sistema
+! Esta es la manera de ver los sistemas de archivos instalados
+
+
+# Identificar sistemas de archivos existentes
+- Saber que sistema de archivos tenemos instalados en nuestros sistema o un disco de almacenamiento extraible
+
+# lsblk -o NAME,FSTYPE 
+- Este comando solo nos permitira listar solo los nombres de dispositivo && los sistemas de archivos con las opciones name && fstype
+
+# lsblk -o NAME,FSTYPE /dev/sda4
+- Este nos permitira analizar una particion en especifico, en este caso la particion 4 del disco sda
+- En el directorio /dev se guardan las particiones de disco
+
+# lsblk -o NAME,FSTYPE,LABEL,FSSIZE,FSUSE%,MOUNTPOINT
+! Este comando muestra todos los nombres de dispositivos tipo de sistemas de archivos, pocentaje usado, punto de montaje etc...

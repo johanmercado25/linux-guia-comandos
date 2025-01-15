@@ -1,0 +1,11 @@
+# DIAGNOSTICOS DE ARRANQUES DEL SISTEMAS 
+- systemd promete arranques mas rapidos vemos que el sistema se inicia lentamente y quieres saber el por que para ello debemos ejecutar:
+
+
+# systemd-analyze blame
+- Este comando sin opciones, nos mostrara lo que es la lista de los procesos de sistemas && cuanto tiempo tardaron en iniciarce 
+- Esto nos mostrara un listado de todos los procesos && el tiempo que se ha tardado en arrancar, todos && cada uno de los procesos 
+
+# systemd-analyze blame --user
+- Este paramtro nos permite analizar los procesos del usuario (--user)  
+- De esta manera se ven los procesos del usuario

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# QUE VAS APRENDER ?
+! Crear archivos && directorios
+! Crear un lote de archivos
+! Rutas relativas && adsolutas
+! Eliminar archivos && directorios
+! Copiar,mover && ronombrar archivos && directorios
+! Permisos archivos notacion octal de chmod
+! Configurar permisos con notacion octal chmod
+! Modos especiales de archivos && su eliminacion
+! Configurar permisos con chmod
+! Configurar propietarios de archivos && directorios con chown
+! Permisos predeterminados con umask
+! Acceso directos, enlaces
+! Ocultar archivos && directorios

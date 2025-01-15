@@ -1,0 +1,21 @@
+# OBTENER UID && GID
+- Vamos a ver como obtener el UID && el GID de los usuarios:
+  ~ Indentificador de Usuarios UID
+  ~ Identificador de Grupos GID
+
+
+# id
+- Este comando mustra informacion del usuario como el UID, GID && tambien otros grupos a los que pertenece mi usuario
+
+# id nombreUsuario 
+- Este comando solo mostrara el UID && GID del usuario   
+
+# sudo id -un
+- Este parametro mostrara el ID efectivo, este es el ID cuando ejecutas comandos como otro usuario 
+! *OJO* si ejecuto el comando sudo, comando no lo ejecuta como un usuario normal si no como el usuario root
+
+# sudo -u nombreUsuario id
+- Este parametro nos mostrara el id del usuario que le indiquemos, la funcion del parametro (-u) es ejecutar un comando con el usuario que le indiquemos 
+
+# sudo -u nombreUsuario id -gn
+- Estos parametros solo nos va a mostrar el nombre de el grupo(group name) del usuario que le indiquemos   

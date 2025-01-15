@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# COMPROBAR INTEGRIDAD ARCHIVOS CONTRASEÑAS
+! Veremos la integridad de los directorios
+# /etc/passwd
+# /etc/shadow
+- Aqui estan las claves de los usuarios 
+# /etc/group
+# /etc/gshadow
+- Aqui estan las claves de los grupos
+
+! Atraves de los comandos
+# pwck 
+- Este comando es para los usuarios
+# grpck
+- Este comando es para los grupos
+! Estos comandos lo que buscan es un formato correcto de datos validos, nombres valisos && GID validos  
+! Aqui veremos los errores o las configuraciones que podamos tener 
+
+# sudo pwck
+- Este comando ejecutado asi por si solo, lo que nos indica los datos de los usuarios && si tiene o le falta algo por ejemplo cuando creamos los usuarios de sistemas en la parte de gestios de usuarios si recordas que lo creamos usuarios sin el /home/usuario aqui nos indicara que a eso usuarios les falta su directorio home && lo que nos indica son los errores y las informaciones que tiene
+
+# sudo grpck
+- Este al igual que el anterior pero en vez de desirnos que no existe no dice que no se encuentra en el fichero /etc/gshadow que esto quiere decir que el grupo no tiene contraseña
+! /etc/gshadow 
+- Este fichero administra las contraseñas de grupos 

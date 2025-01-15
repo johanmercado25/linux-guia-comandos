@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# OPTIMIZAR DISCO SSD
+
+  # sudo fdisk -l
+	Este comando nos va a listar todos las particiones de discos duros
+
+
+  # sudo hdparm -I /dev/sda | grep TRIM
+	Este comando nos indicara si el disco duro es compatible con TRIM
+
+  # sudo df -h
+	Este nos va a listar los directorios principales 
+
+  # sudo fstrim -v /
+	Esto es suponiendo que el punto de montaje esta en la barra este comando nos sirve para gestionar el disco con TRIM
+
+  # sudo fstrim -a -v
+	Este comando nos sirve si queremos fozar a que se haga un nuevo TRIM 
+
+
+# El proximo paso sera mejorar las prestaciones del disco para lo cual editaremos el fichero fstab que se encuentra en el directorio /etc 
+  
+  # sudo nano /etc/fstab

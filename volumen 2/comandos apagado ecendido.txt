@@ -1,0 +1,40 @@
+#!/bin/bash
+
+sudo shutdown
+# Este comando apaga el sistema 
+
+sudo half
+# Este comando apaga el sistema completamente, desmontando los procesos y servios y tambien desmontando los sistemas de archivos, pero no corta la electricidad, esto quiere decir que despues de usar half tienes que dejar precionado el boton de encendido para apagar el ordenador por completo
+
+sudo reboot
+# Este comando lo que hace es que apaga el sistema de forma limpia y lo reinicia 
+
+sudo poweroff
+# Este comando lo que hace es que apaga el sistema completamente y apaga la electricidad
+
+# Tambien puedes combinar a half y power off con reboot
+
+half --reboot
+powerof --reboot
+
+
+# Suspension del sistema
+
+systemctl suspend
+# En este caso lo que hace que guarda toda la sesion en la ram y pone todo el hardware  en estado de supension
+
+# Invernar el sistema
+
+systemctl hibernate
+# Este comando lo que hace que guarda toda la sesion en el disco y apaga la maquina, puede reactivar presionando el boton de encendido 
+
+# modo hibrido este es una combinacion entre supencion y invernar 
+
+systemctl hybrid-sleep
+# En este caso suspende tu sistema tanto la memoria como en el disco y apaga todos los dispositivos excepto la RAM y si la RAM pierde energia puede reanudarlo desde el DISCO
+systemctl suspend-then-hibernate
+# En este caso primero entra en el modo de supension y luego entra en el modo de invernacion luego del tiempo que se le indica en la ruta:
+# Esto se encuentra en la ruta que recibe un parametro:
+/etc/systemd/sleep.conf 
+# La linea de codigo que hay que descomentar se llama:
+HibernateDelaySec=180min # Aqui le indicamos el tiempo que queremos que espere

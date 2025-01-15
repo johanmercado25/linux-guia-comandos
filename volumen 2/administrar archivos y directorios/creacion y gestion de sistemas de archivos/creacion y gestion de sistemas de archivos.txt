@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# CREACION && GESTION DE SISTEMA DE ARCHIVOS
+- Introduccion && descripcion general del sistema archivos
+- Listado del sistema de archivos
+- Identificacion de los sistemas de archivos
+- Creacion de sistemas de archivos con gparted
+
+! Linux admite una gran cantidad de sistemas de archivos, de hecho mas que cualquier otro sistema operativo
+! Los sistemas de archivos son esenciales para la informatica && hacen una gran cantidad de trabajo 
+
+# Que es un sistema de archivo?
+- Un sistema de archivo de un ordenador o sistema Informatico lo que esta haciendo es almacenar organizar && proteger los datos que estan en el.
+- Estos sistemas de archivos estan bajo constante estres de manera continua por estar en un uso frecuente
+- Como usuario de linux tenemos la suerte de tener, muchos sistemas de archivos de primera categoria para elegir
+! Veremos como las herramientas de linea de comandos para crear && administrar los sistemas de archivos de proposito general que estan completamente soportados en linux
+- Estos son:
+! ext4: Este es el sistema de archivos extendido
+! xfs: Este es el sistema de archivo x
+! Btrfs (B-tree File System): Este es el sistema de archivo de arbol B
+! fast 16 && 32: Esta es la tabla de asignacio de archivos de 16 && 32 bit que es de Microsoft Windows, bueno el que se usaba antes ya que ahora esta el ntfs
+! ntfs o exfat: Este es el standar fat, es el sistema de archivo de 64bit mas nuevo de Microsoft
+- Este ultimo no lo tocaremos ni el hfs o el hfs plus o apfs de apple
+- Linux tiene un buen soporte para ntfs de Microsoft, Tanto  de lectura como escritura
+! Tambien hay sistemas de archivos de proposito especial como el ubis && el jfs2 esto se utilizan para dispositivos con flash
+! El sistema de archivos comprimido squashFS, hdfs, cphfs o glusterfs: Estos se utilizan para informatica distribuida
+! NFS: Es un sistema de archivos compartidos en red
+
+# Descripcion
+- Cuando utilizamos una unidad de almacenamiento como un disco duro, unidad flash o una tarjeta SD
+- Este debe ser particionado && formateado con un sistema de archivos
+- Una particion de disco puede ocupar todo el espacio o dividirse en multiples particiones
+! Cada particion es como un disco independiente && cada particion puede tener un sistema de archivos diferentes 
+- POR EJEMPLO: En un mismo disco duro puedes tener dos particiones una con linux && otra con windows
+! Un sistema de archivos debe montarse o conectarse al sistema de archivos en ejecucion antes de ser accesible
+! Un sistema de archivo necesita un punto de montaje, que es un directorio montado para ese sistema de archivos && puede ser en cualquier lugar
+! Solo se puede montar un sistema de archivo por punto de montaje, si monta un segundo punto de montaje sobre escribira el primero
+! Un sistema de archivos se puede configurar para montarse 
+- Automaticamente al inicio del sistema
+- Dinamicamente cuando conectas medios extraibles
+- Manualmente en la linea de comando o haciendo click en la unidad o el administrador de archivos 
+! La mayoria de distribuciones de linux se encargan de manejar los medios extraibles
+- Tambien puedes consultar la documentacion oficial del kernel de linux 
+! xfs Se puede aumentar su tamaño, pero no se puede reducir la particion 

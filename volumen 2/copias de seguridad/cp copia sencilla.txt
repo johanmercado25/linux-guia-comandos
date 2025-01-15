@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# COPIA SENCILLA
+! La manera mas sencilla de hacer una copia es copiarlo manualmente desde el administrador de archivos
+! Otra opcion es el comando (cp)
+
+# cp nombreArchivo /media/usuario/unidadUSB
+- Este comando copia el archivo que le indiquemos a la ubicacion que le pasemos
+
+! Puedes copiar varios archivos con el comando (cp) separandolos por espacios
+# cp -auv archivo1 archivo2... /directorio
+- Esto copiara varios archivos a la vez
+
+# cp -auv $HOME /directorioDondeCopiara
+- Esto hara una copia de seguridad del usuario donde estemos logueado
+
+# cp -auv /home/usuario/* /directorioDondeCopiara
+- Este comando copiara todos los archivos dentro del usuario o el direcorio que le indiquemos pero no el directorio en si, si no lo que contenga adentro
+
+
+# PROGRAMAR COPIAS AUTOMATICAS
+
+# sudo nano /etc/crontab 
+! haremos la configuracion pertinente
+! Cuando ponemos (*) este simbolo representa todos
+! 30 22 * * * /bin/cp -au /home/usuario /directorioDondeCopiara
+- Aqui lo que hacemos es con el primer parametro (30) que va de (0-59) es indicarle los minutos
+- El segundo (22) va de (0-23) lo que hacemos es  indicarle la hora a la que queremos hacer la copia
+- El tercero (*) que va de (1-31) lo que indica el dia del mes
+- El cuarto (*) que va de (1-12) lo que indica el mes
+- El quinto (*) que va de (0-6) los dias de la semana comenzando por el domingo
+

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# NOTACION SIMBOLICA
+- Esta es mas flexible que la octal, pero tambien es un poco mas compleja por que su comportamiento depende del operador que utilices
+! Hay tres operadores principales:
+! (+) Este agrega permisos a los archivos ya existentes
+! (-) Este elimina los permisos
+! (=) Este establece permisos especifico eliminando a su vez cualquier permiso no incluido
+! (a) Este modifica los permisos para todos los usuarios
+- Tambien podemos hacerlo para usuarios especificos:
+! (u) Este parametro indica el propietario
+! (g) Este indica el grupo al que pertenece el archivo
+! (o) Este indica a otros o todos
+
+# chmod -v g+w,o+w nombreArchivo
+- Esto indica que el grupo y otros tendran permimos de escritura la diferencia del octal que aqui cada variante va separada por (,) y que debemos especificar sobre que variante queremos efectuar el cambio
+! Para restar permisos es lo mismo pero usamos el simbolo de (-)
+
+! Los comandos scripts necesitan el bit ejecutable

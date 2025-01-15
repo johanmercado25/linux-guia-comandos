@@ -1,0 +1,132 @@
+#!/bin/bash
+
+# USO COPIAS RSYNC COPIAS LOCALES
+! Esta es mas rapida && eficiente que la copia sencilla cn (cp), tamien permite restauraciones de archivos simples que puedas reailizar con herramientas estandarde linux sin necesidad de usar sofware especial 
+! rsync mantiene los sistemas de archivos sincronizado tanto locales como remotos, tambien es rapido y eficiente, ya que transfiere solo los cambios en los archivos y puedes restaurar archivos con el propio comando rync o con el comando cp, el administrador de archivos o cualquier otra herramienta de copia que prefieras
+
+# rsync -av $HOME /RutaCopiaGuardar
+- Este comando hace una copia de seguridad && lo que hace despues es que sincroniza los cambias en tiempo real, esto quiere decir que los cambios que se van haciendo en el origen lo va haciendo en el destino
+
+# rsync -av $HOME/directorio $HOME/directorio /RutaCopiaGuardar  
+- Tambien podemos hacer solo copia de uno o varios ficheros en especifico
+
+# rsync -av /rutaRsyncBackups $HOME
+- Esto restaurara el backup que hallamos hecho anteriormente a nuestro directorio /home/usuario
+
+# rsync -av --drive-run $HOME /RutaCopiaGuardar
+- Este parametro hara una simulacion de la copia pero no hara la copia
+
+! Si se eliminan algunos archivos de un directorio de origen rsync no lo hara almenos que se le indique que lo haga explicitamente con accion delete
+# rsync -av --delete $HOME /RutaCopiaGuardar  
+- Este parametro lo que va hacer es que sincronizara el borrado, esto quiere decir que si borramos algo en el origen se borrara en el destino
+! Esto no es coveniente en entornos de trabajo o donde varias personas tegan accesos a los archivos
+
+
+# USO RSYNC A TRAVES DE SSH
+! Este te permitira copiar archivos en otro ordenador en tu red local o atraves de internet, esto hara que el transporte este cifrado encriptado && con autenticacion la solucion para eso es utilizar SSH secure shell, que te permitira conectarte en un ordenador remoto de forma segura
+! Rsync usa ssh por defecto cuando transfieres archivos en otra maquina
+! La maquina remota debe tener un servidor SSH ejecutandose
+! La maquina origen lo que debe ser cliente SSH ya configurado
+
+# hostname
+- Este comando te mostrara el nombre del host que esta logueado en la maquina en este momento
+
+# rsync -av $HOMEmaquinaOrigen/nombreDirectorio nombreMaquinaDestino@nombreHostMaquinaDestino:$HOME/DirectorioDestino
+- Este comando nos permitira enviar archivos o copias de seguridad a otro dispositivo
+
+# rsync -av $HOMEmaquinaOrigen/nombreDirectorio nombreMaquinaDestino@servidor.remoto.com:directorioDestino/
+- Este te permitira enviar archivos a un servidor remoto o a un dominioPropio.com atraves de la red 
+
+# rsync -av nombreMaquinaOrigen@servidor.remoto.com:directorioOrigen/ $HOMEmaquinaDestino/nombreDirectorio
+- Este hara lo anterior de forma invertida, es to quiere decir que traera los datos que le indiquemos que esten en un servidor remoto o nuestro dominioPersonal.com
+
+! Debes asegurarte que SSh este configurado correctamente en ambos ordenadores o maquinas, antes de realizar transferencias remotas
+! El atributo (-a) Esto quiere decir que se deben copiar todos los archivos de forma recursibas 
+
+
+# AUTOMATIZACION RSYNC CON CRON && SSH
+- Vamos a ejecutar cron ejecutar automaticamente transferencias seguras con rsync
+
+# sudo nano /etc/crontab
+! haremos la configuracion pertinente
+! Cuando ponemos (*) este simbolo representa todos
+! usr/bin/rsync esta es la ruta donde se encuentra el comando que vamos a ejecutar 
+! server1 Representa el host del server o la maquina donde lo queremos alojar
+! root indica que el comando se ejecutara con permisos de root
+- Aqui lo que hacemos es con el primer parametro (30) que va de (0-59) es indicarle los minutos
+- El segundo (22) va de (0-23) lo que hacemos es  indicarle la hora a la que queremos hacer la copia
+- El tercero (*) que va de (1-31) lo que indica el dia del mes
+- El cuarto (*) que va de (1-12) lo que indica el mes
+- El quinto (*) que va de (0-6) los dias de la semana comenzando por el domingo
+! El ejemplo que haremos es programar una copia a un servidor local, a un dispositivo ubicado en nuestra red
+
+# 00 22 * * *    root /usr/etc/rsync -a /etc server1:/backups
+! Recuerda siempre que la maquina de destino debe estar configurada para aceptar conexiones ssh && que el usuario tenga los permisos necesarios
+
+
+# EXCLUSION DE ARCHIVOS EN LA COPIA SEGURIDAD
+! Rsync te permite excluir archivos en la copia de seguridad 
+! Esto funciona para conexiones remotas a un dispositivo USB pero tambien funciona para conexiones SSH
+! Cuando se trata de unos pocos archivos se puede hacer por la linea de comando usando (--exclude)
+
+# rsync -av --exclude=archivoExcluir $HOME/rutaDirectorio/archivo /rutaDestinoGuardar
+- Este parametro te permiira hacer una copia excluyendo el archivo que le indiques
+! Esto excluira todos los archivos con el mismo nombre
+
+! Si quiero excluir mas de un archivo hay que cerrarlo entre llaves {} separados por comas(,) && comillas simples('') no debe haber espacios entre el signo igual && las llaves ni espacios entre las comas && las comillas simples
+# rsync -av --exclude={'archivo1','archivo2','...'} $HOME/rutaDirectorio/archivo /rutaDestinoGuardar
+- Este formato te permitira excluir varios archivos && puede incluir archivos && directorios
+
+# USO DE RSYNC A TRAVES DE SSH
+! Ahora veremos como excluir un conjunto seleccionado de archivos en la copia de seguridad, en lugar de definir las listas de archivos para excluir
+! Cuando lo que quiere es respaldar es una poca unos pocos archivos puedes hacerlo en la linea de comando 
+
+# rsync -av --include=*/ --include=backups.extension --exclude='*' $HOME/rutaDirectorio/archivo /rutaDestinoGuardar
+- Aqui le estamos diciendo que de todo los que se encuentra del directorio (/) que le indiquemos mas adelante, nos incluya backups.extension && nos excluya todo que va a partir, desde el directorio que le indiquemos
+
+# rsync -av --include=*/ --include={'archivo1','archivo2','...'} --exclude='*' $HOME/rutaDirectorio/archivo /rutaDestinoGuardar
+- Este incluira varios archivos que le indiquemos
+
+- Ojo esto incluira otros directorios que esten dentro de la ruta aunque no se lo hemos pasado por parametro
+
+# rsync -avm --include=*/ --include=backups.extension --exclude='*' $HOME/rutaDirectorio/archivo /rutaDestinoGuardar
+- El parametro (-m) lo que hace que si hay un directorio vacio este no lo incluira
+
+
+# INCLUSION EN UN ARCHIVO SIMPLE
+- Tienes demaciados archivos para incluir en el comando rsync && deseas mantener una lista en un archivo que rsync pueda leer, tambien quieres que se asignen
+- Aqui veremos como podemos traer la lista desde un fichero los llamaremos 
+- inclusion.txt Aqui tendremos todos los ficheros que deseamos incluir las ruta donde estan ubicados
+- exclusion.txt Aqui tendremos todos los ficheros que deseamos excluir
+
+# rsync -av $HOME --file-form $HOME/ubicacionArchivo/inclusion.txtb nombreMaquinaDestino@servidor.remoto.com:directorioDestino/
+- Este parametro nos permitira incluir archivos mediante un fichero && enviar los archivos al servidor(dominio) o unidad de almacenamiento
+! Archivo inclusion
+/home/usuario/ubicacionArchivo
+/home/usuario/ubicacionArchivo
+
+
+# INCLUSION/EXCLUSION EN ARCHIVO EXCLUSION
+- veremos como hacer inclusiones como exclusiones mediante un archivo de exclusion.txt
+- Un archivo de exclusion tiene mas flexibilidad && contiene tanto las exclusiones como la inclusiones 
+- Los archivos o ficheros que deseamos agregar lo hacemos usando el simbolo mas y la ruta (+/rutaArchivos)
+- Los archivos o ficheros que deseamos ignorar lo hacemos usando el simbolo menos y la ruta (-/rutaArchivos)
+
+# rsync -av $HOME --exclude-form=$HOME/ubicacionArchivo/inclusion.txtb nombreMaquinaDestino@servidor.remoto.com:directorioDestino/
+- Este es el parametro de exclusion que te permite incluir + o excluir -
+! Archivo exclusion
++/home/usuario/ubicacionArchivo
+-/home/usuario/ubicacionArchivo
+
+! Las ventajas de usar formulario que puedes hacer esctruras grandes y complejas para incluir o exluir datos
+! Recuerda que el archivo de exclusion esta en el mismo directorio que el comando rsync
+
+
+# Limitar ancho de banda en rsync
+! La transferencia de archivos grandes puede que consuma mucho ancho de banda de la red && puede provocar && puede provocar un rendirizacion de todo
+! Puede ser una solucion sencilla limitar el ancho de banda de rsync, sin tener que hacer configuraciones complejas para limitar el ancho de banda
+
+# rsync --bwlimit=512 -ave ssh $HOME/directorio nombreMaquinaDestino@servidor.remoto.com:directorioDestino/
+- Este comando solo transferira datos a la velocidad que le indiquemos
+- Aqui representa la velocidad a kilobit=512MB
+- El parametro (-e) este verifica la integridad de los archivos

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# MOVER COPIAR RENOMBRAR ARCHIVOS DIRECTORIOS
+
+# cp -v archivo1 archivo2 nuevoNombre /ruta/ruta
+- Este comando nos copia el archivo o los archivos que le indiquemos en la ruta que le pasemos
+
+# cp -rv carpeta nuevoNombre /ruta/ruta
+- Este comando nos copiaria un directorio que contenga mas archivos dentro
+
+# mv
+- Este comando es para mover o renombrar archivos
+
+# mv nombreArchivo /ruta
+- Esto movera el archivo a la ruta que le indiquemos
+
+# mv nombreArchivo nuevoNombre
+- Esto va a renombrar un archivo que le indiquemos
+

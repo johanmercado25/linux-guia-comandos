@@ -1,0 +1,85 @@
+#!/bin/bash
+
+# systemctl status cups.service
+- Este parametro te proporciona un buen conjunto de informacion de estado util, como podemos apreciar nos muestra informacion importante de los servicios cup
+
+# systemctl status bluetooth.service lm-sensors.service NetworkManager.service
+- si queremos ejecutar varios servicios a la vez lo podemos hacer separando sus nombres con espacios
+
+
+# INICIAR, DETENER && REINICIAR SERVICIOS CON SYSTEMD?
+-ESTO SE MANEJA CON SYSTEMCTL
+
+# sudo systemctl stop acpid.service
+- Este es un demonio que gestiona que gestiona los eventos de la interfas de configuracion avanzada y energia en los sistemas linux, es decir que maneja las acciones que tu utilizas cuando estas interactuando con los botones de ecendido,suspencion , de invernar u otro eventos relacionados con la energia de tu equipo, este servicio por general siempre esta iniciado lo que vamos hacer es pararlo 
+-caundo ejecutamos pueden quedar activos tengo:
+# acpid.socket
+# acpid.path
+- ahora lo que vamos a hacer es iniciarlo
+# sudo systemctl start acpid.service
+- Con este parametro lo que hacemos es iniciarlo
+- Si lo que queremos es detenerlo y reiniciarlo
+# sudo systemctl restart acpid.service
+- Si lo que queremos es hacer , es una recarga de la configuracion , es decir que en su archivo de configuracion a hecho cambios y quieres aplicar los cambios sin tener que reiniciar el servicio
+# sudo systemctl reload acpid.service
+
+
+# HABILITAR && DESABILITAR SERVICIOS?
+- EN ESTA SESION VAMOS A VER COMO CONFIGURAR PARA QUE UN SERVICIO O VARIOS DE ELLOS INICIEN AUTOMATICAMENTE AL ARRANCAR O QUIERES EVITAR QUE UN SERVICIO SE INICIE AL ARRANCAR O DESHABILITARLO POR COMPLETO 
+# Las 3 configuraciones que se hacen sobre los servicios son:
+- habilitar: Cuando habilitamos un servicio lo que hacemos es, hacer que el servicio se inicie automaticamente al arrancar el ordenador
+- deshabilitar: Cuando deshabilitamos lo que hacemos es, evitar que se inicie un servicio al arramcar , pero aun cuando ya el sistema esta arrancado podemos iniciarlo y detenerlo manualmente.
+- enmascarar: Cuando enmascaramos lo que hace es, deshabilitarlo por completo para que no se pueda iniciar en ningun caso
+
+# sudo systemctl enable acpid.service
+- Este parametro habilita el servicio acpid para que arranque desde que arranque el sistema, pero luego del comando el servicio todavia no estaria arrancado 
+- Que podemos hacer para iniciar servicio con esta orden
+
+# sudo systemctl enable --now acpid.service
+- Este a diferencia del anterior, este parametro lo que hace es configurar el servicio para que arranque cada vez que iniciemos sesion, pero ademas el --now hace que el servicio se ejecute de inmediato 
+
+# sudo systemctl disable acpid.service
+- Este comando lo que hace que deshabilita el servicio para que no inicie automaticamente cuando iniciemos el sistema pero si podemos habilitarlo manualmente
+- Este lo deja deshabilitado para el siguiente arranque y los sucesivos, pero si ese servicio esta en ejecucion va a seguir en ejecucion hasta el siguiente reinicio
+
+# sudo systemctl disable --now acpid.service
+- Este a diferencia del anterior, este parametro lo que hace es configurar el servicio para que no arranque cada vez que iniciemos sesion, pero ademas el --now hace que el servicio no se ejecute de inmediato 
+
+! Si haz creado enlaces simbolicos manaualmente para un servicio, para reestablecerlo rapidamente a los valores predeterminado que tenia
+# sudo systemctl reenable acpid.service
+- Si has cambiado los enlaces simbolicos de un servicio ya eres un usuario mas avanzado, pero quieres volver a los enlaces por defecto
+
+! Como deshabilitar un comando completamente para que no se pueda iniciar de ninguna manera es decir lo vamos a enmacascarar
+# sudo systemctl mask bluetooth.service
+- Este comando hace que el servicio bluetooth no se pueda iniciar, ni al arramcar ni al reiniciar el sistema
+
+! Como habilitar un servicio que esta enmascarado
+- # sudo systemctl unmask bluetooth.service
+- Luego de desenmascararlo y puedes ponerlo a que arranque automaticamente o arrancarlo manualmente
+
+
+# DETENER PROCESOS PROBLEMATICOS?
+
+# sudo systemctl kill nombreDelProceso
+- Este comando  mata el proceso que le indiquemos la ventaja de usar systemd es que no deja procesos huerfanos o procesos al vacio
+
+# kill nombreDelProceso
+-- En los sistemas sin systemd solo se usa el parametro o comando kill mas el nombre del proceso
+
+# systemctl status nombreDelProceso
+- Con este comando verificamos el estado del proceso y verificamos si el proceso se ha detenido
+
+# sudo systemctl kill -9 nombreDelProceso
+- Este parametro se usa cuando el proceso no se ha detenido limpiamente y hay que forzar su detencion
+
+
+# EN LA MAYORIA DE LOS CASOS SIEMPRE SE USA EL COMANDO <KILL> POR SI SOLO
+
+# kill PID
+- Este comando es mucho mas efectivo, pero no reconoce ni nombre de servicios ni nombre de procesos  si no que se pone el PID
+
+# kill -9 PID
+- Este parametro se utiliza para forzar la detencion y en la mayoria de los casos se utiliza esta forma para asegurar que el proceso se detenga
+
+# ps -ef
+- Este comando nos listara los procesos
